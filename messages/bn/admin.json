@@ -1,0 +1,463 @@
+{
+  "dashboard": {
+    "title": "অ্যাডমিন ড্যাশবোর্ড",
+    "welcome": "স্বাগতম, {name}। এই প্যানেল থেকে আপনি শহীদ ও আহতদের তথ্য, মামলা, বাজেট, স্বেচ্ছাসেবক এবং ফরেনসিক যাচাই পরিচালনা করতে পারবেন।",
+    "signOut": "সাইন আউট",
+    "forensicsQueueLink": "ফরেনসিক পর্যালোচনা সারি",
+    "links": {
+      "victims": "শহীদ ও আহতদের তথ্য",
+      "cases": "মামলা ব্যবস্থাপনা",
+      "lawyers": "আইনজীবী তালিকা",
+      "falseCases": "মিথ্যা মামলার প্রমাণ পর্যালোচনা",
+      "volunteers": "স্বেচ্ছাসেবক আবেদন",
+      "volunteerTasks": "স্বেচ্ছাসেবক টাস্ক ডিসপ্যাচ",
+      "archive": "জুলাই স্টোরিজ আর্কাইভ",
+      "timeline": "সময়রেখা ইভেন্ট"
+    }
+  },
+  "forensics": {
+    "title": "ফরেনসিক পর্যালোচনা সারি",
+    "description": "স্বয়ংক্রিয়ভাবে বিশ্লেষিত প্রতিটি ফাইল এখানে মানব পর্যালোচনার জন্য তালিকাভুক্ত হয়।",
+    "empty": "পর্যালোচনার জন্য কোনো ফাইল নেই।",
+    "table": {
+      "submitted": "জমার তারিখ",
+      "type": "ধরন",
+      "risk": "ঝুঁকি",
+      "reviewStatus": "পর্যালোচনার অবস্থা"
+    },
+    "reviewStatus": {
+      "pending": "মুলতুবি",
+      "approved": "অনুমোদিত",
+      "rejected": "প্রত্যাখ্যাত"
+    },
+    "relatedTypes": {
+      "false_case_evidence": "মিথ্যা মামলার প্রমাণ",
+      "victims": "শহীদ/আহত রেকর্ড",
+      "archive_items": "আর্কাইভ আইটেম",
+      "budget_transactions": "বাজেট লেনদেন"
+    },
+    "viewDetails": "বিস্তারিত দেখুন",
+    "detail": {
+      "back": "সারিতে ফিরুন",
+      "notFound": "এই ফরেনসিক রেকর্ডটি পাওয়া যায়নি।",
+      "originalFile": "মূল ফাইল",
+      "heatmap": "ELA হিটম্যাপ",
+      "heatmapUnavailable": "হিটম্যাপ সংরক্ষিত হয়নি।",
+      "ocrText": "শনাক্তকৃত লেখা",
+      "noOcrText": "কোনো লেখা শনাক্ত করা যায়নি।",
+      "extractedFields": "নিষ্কাশিত তথ্য",
+      "nationalId": "জাতীয় পরিচয়পত্র নম্বর",
+      "date": "তারিখ",
+      "duplicateMatches": "সম্ভাব্য পুনরাবৃত্তি",
+      "noDuplicates": "কোনো পুনরাবৃত্তি পাওয়া যায়নি।",
+      "sha256": "SHA-256 হ্যাশ",
+      "submittedFields": "জমাকৃত মামলার তথ্য",
+      "accusedFullName": "অভিযুক্ত ব্যক্তি",
+      "description": "বিবরণ",
+      "contact": "যোগাযোগ",
+      "approve": "অনুমোদন করুন",
+      "reject": "প্রত্যাখ্যান করুন",
+      "approving": "অনুমোদন করা হচ্ছে...",
+      "rejecting": "প্রত্যাখ্যান করা হচ্ছে...",
+      "onchainAnchored": "ব্লকচেইনে সংরক্ষিত",
+      "mockChainNote": "মক চেইন — প্রকৃত Polygonscan লেনদেন নয়।",
+      "onchainVerified": "ব্লকচেইনে যাচাইকৃত",
+      "contractAddress": "চুক্তির ঠিকানা",
+      "actionError": "কাজটি সম্পন্ন করা যায়নি। আবার চেষ্টা করুন।"
+    }
+  },
+  "lawyers": {
+    "title": "আইনজীবী তালিকা",
+    "description": "মামলায় নিযুক্ত আইনজীবীদের তথ্য পরিচালনা করুন।",
+    "newButton": "নতুন আইনজীবী যোগ করুন",
+    "empty": "কোনো আইনজীবী যোগ করা হয়নি।",
+    "table": {
+      "name": "নাম",
+      "barRegNo": "বার নিবন্ধন নম্বর",
+      "specialization": "বিশেষজ্ঞতা",
+      "status": "অবস্থা",
+      "actions": "সম্পাদনা"
+    },
+    "status": {
+      "active": "সক্রিয়",
+      "inactive": "নিষ্ক্রিয়"
+    },
+    "form": {
+      "createTitle": "নতুন আইনজীবী যোগ করুন",
+      "editTitle": "আইনজীবীর তথ্য সম্পাদনা করুন",
+      "fullName": "পূর্ণ নাম (ইংরেজি)",
+      "fullNameBn": "পূর্ণ নাম (বাংলা)",
+      "barRegistrationNo": "বার নিবন্ধন নম্বর",
+      "specialization": "বিশেষজ্ঞতা",
+      "specializationHint": "কমা দিয়ে আলাদা করুন, যেমন: criminal_law, human_rights",
+      "contactEmail": "যোগাযোগের ইমেইল",
+      "contactPhone": "যোগাযোগের ফোন নম্বর",
+      "isActive": "সক্রিয় (জনসম্মুখে দৃশ্যমান)",
+      "save": "সংরক্ষণ করুন",
+      "saving": "সংরক্ষণ করা হচ্ছে...",
+      "errors": {
+        "required": "এই তথ্যটি আবশ্যক।",
+        "invalidEmail": "একটি সঠিক ইমেইল ঠিকানা লিখুন।",
+        "saveFailed": "সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।"
+      }
+    }
+  },
+  "victims": {
+    "title": "শহীদ ও আহতদের তথ্য",
+    "description": "শহীদ ও আহতদের রেকর্ড যোগ, সম্পাদনা, যাচাই ও প্রকাশ করুন।",
+    "newButton": "নতুন রেকর্ড যোগ করুন",
+    "empty": "কোনো রেকর্ড যোগ করা হয়নি।",
+    "table": {
+      "name": "নাম",
+      "status": "ধরন",
+      "verification": "যাচাইয়ের অবস্থা",
+      "published": "প্রকাশনা",
+      "actions": "সম্পাদনা"
+    },
+    "verification": {
+      "pending": "মুলতুবি",
+      "verified": "যাচাইকৃত",
+      "flagged": "চিহ্নিত"
+    },
+    "published": {
+      "yes": "প্রকাশিত",
+      "no": "অপ্রকাশিত"
+    },
+    "form": {
+      "createTitle": "নতুন রেকর্ড যোগ করুন",
+      "editTitle": "রেকর্ড সম্পাদনা করুন",
+      "fullName": "পূর্ণ নাম (ইংরেজি)",
+      "fullNameBn": "পূর্ণ নাম (বাংলা)",
+      "status": "ধরন",
+      "statusOptions": {
+        "martyr": "শহীদ",
+        "injured": "আহত"
+      },
+      "age": "বয়স",
+      "gender": "লিঙ্গ",
+      "district": "জেলা",
+      "upazila": "উপজেলা",
+      "incidentDate": "ঘটনার তারিখ",
+      "incidentLocation": "ঘটনাস্থল (ইংরেজি)",
+      "incidentLocationBn": "ঘটনাস্থল (বাংলা)",
+      "storySummary": "সংক্ষিপ্ত বিবরণ (ইংরেজি)",
+      "storySummaryBn": "সংক্ষিপ্ত বিবরণ (বাংলা)",
+      "isPublished": "প্রকাশিত (জনসম্মুখে দৃশ্যমান)",
+      "verificationStatus": "যাচাইয়ের অবস্থা",
+      "save": "সংরক্ষণ করুন",
+      "saving": "সংরক্ষণ করা হচ্ছে...",
+      "errors": {
+        "required": "এই তথ্যটি আবশ্যক।",
+        "saveFailed": "সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।"
+      }
+    }
+  },
+  "cases": {
+    "title": "মামলা ব্যবস্থাপনা",
+    "description": "মামলা যোগ, সম্পাদনা, আইনজীবী নিয়োগ ও অগ্রগতির হালনাগাদ পরিচালনা করুন।",
+    "newButton": "নতুন মামলা যোগ করুন",
+    "empty": "কোনো মামলা যোগ করা হয়নি।",
+    "noneOption": "— কোনোটি নয় —",
+    "table": {
+      "title": "শিরোনাম",
+      "caseNumber": "মামলা নম্বর",
+      "status": "অবস্থা",
+      "published": "প্রকাশনা",
+      "actions": "সম্পাদনা"
+    },
+    "published": {
+      "yes": "প্রকাশিত",
+      "no": "অপ্রকাশিত"
+    },
+    "caseType": {
+      "criminal_prosecution": "ফৌজদারি মামলা",
+      "rehabilitation": "পুনর্বাসন",
+      "compensation": "ক্ষতিপূরণ"
+    },
+    "status": {
+      "filed": "দায়েরকৃত",
+      "investigation": "তদন্তাধীন",
+      "under_trial": "বিচারাধীন",
+      "verdict": "রায় প্রদত্ত",
+      "closed": "নিষ্পত্তি"
+    },
+    "form": {
+      "createTitle": "নতুন মামলা যোগ করুন",
+      "editTitle": "মামলা সম্পাদনা করুন",
+      "caseNumber": "মামলা নম্বর",
+      "title": "শিরোনাম (ইংরেজি)",
+      "titleBn": "শিরোনাম (বাংলা)",
+      "description": "বিবরণ (ইংরেজি)",
+      "descriptionBn": "বিবরণ (বাংলা)",
+      "caseType": "মামলার ধরন",
+      "status": "অবস্থা",
+      "victim": "সম্পর্কিত ভুক্তভোগী",
+      "assignedLawyer": "নিযুক্ত আইনজীবী",
+      "courtName": "আদালতের নাম",
+      "filedDate": "দায়েরের তারিখ",
+      "isPublished": "প্রকাশিত (জনসম্মুখে দৃশ্যমান)",
+      "save": "সংরক্ষণ করুন",
+      "saving": "সংরক্ষণ করা হচ্ছে...",
+      "errors": {
+        "required": "এই তথ্যটি আবশ্যক।",
+        "saveFailed": "সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।"
+      }
+    },
+    "updates": {
+      "title": "মামলার অগ্রগতির সময়রেখা",
+      "addTitle": "নতুন হালনাগাদ যোগ করুন",
+      "updateText": "হালনাগাদের বিবরণ (ইংরেজি)",
+      "updateTextBn": "হালনাগাদের বিবরণ (বাংলা)",
+      "milestoneType": "মাইলফলকের ধরন",
+      "milestoneOptions": {
+        "filed": "মামলা দায়ের",
+        "hearing": "শুনানি",
+        "evidence_submitted": "প্রমাণ দাখিল",
+        "verdict": "রায়",
+        "other": "হালনাগাদ"
+      },
+      "updateDate": "তারিখ",
+      "add": "যোগ করুন",
+      "adding": "যোগ করা হচ্ছে...",
+      "delete": "মুছে ফেলুন",
+      "empty": "এখনো কোনো হালনাগাদ তথ্য যোগ হয়নি।",
+      "errors": {
+        "required": "হালনাগাদের বিবরণ আবশ্যক।",
+        "saveFailed": "সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।"
+      }
+    }
+  },
+  "falseCases": {
+    "title": "মিথ্যা মামলার প্রমাণ পর্যালোচনা",
+    "description": "নাগরিকদের জমাকৃত মিথ্যা মামলার প্রমাণ পর্যালোচনা ও অবস্থা হালনাগাদ করুন।",
+    "empty": "কোনো জমাদান নেই।",
+    "table": {
+      "submitted": "জমার তারিখ",
+      "accused": "অভিযুক্ত ব্যক্তি",
+      "district": "জেলা",
+      "status": "অবস্থা",
+      "actions": "বিস্তারিত"
+    },
+    "status": {
+      "submitted": "জমাকৃত",
+      "under_review": "পর্যালোচনাধীন",
+      "verified": "যাচাইকৃত",
+      "rejected": "প্রত্যাখ্যাত"
+    },
+    "detail": {
+      "back": "তালিকায় ফিরুন",
+      "caseReference": "মামলা নম্বর",
+      "district": "জেলা",
+      "alibiTimestamp": "অ্যালিবাইয়ের সময়",
+      "description": "বিবরণ",
+      "contact": "যোগাযোগ",
+      "evidenceTitle": "সংযুক্ত প্রমাণ",
+      "viewForensicAnalysis": "ফরেনসিক বিশ্লেষণ দেখুন",
+      "filesCount": "মোট {count}টি ফাইল সংযুক্ত।",
+      "reviewTitle": "পর্যালোচনা ও অবস্থা হালনাগাদ",
+      "statusLabel": "অবস্থা",
+      "status": {
+        "submitted": "জমাকৃত",
+        "under_review": "পর্যালোচনাধীন",
+        "verified": "যাচাইকৃত",
+        "rejected": "প্রত্যাখ্যাত"
+      },
+      "reviewNotes": "পর্যালোচনার মন্তব্য",
+      "save": "সংরক্ষণ করুন",
+      "saving": "সংরক্ষণ করা হচ্ছে...",
+      "actionError": "কাজটি সম্পন্ন করা যায়নি। আবার চেষ্টা করুন।"
+    }
+  },
+  "volunteers": {
+    "title": "স্বেচ্ছাসেবক আবেদন",
+    "description": "স্বেচ্ছাসেবক আবেদন পর্যালোচনা করুন এবং তাদের অবস্থা হালনাগাদ করুন।",
+    "empty": "এখনো কোনো আবেদন নেই।",
+    "table": {
+      "name": "নাম",
+      "district": "জেলা",
+      "skills": "দক্ষতা",
+      "status": "অবস্থা",
+      "actions": "বিস্তারিত"
+    },
+    "status": {
+      "applied": "আবেদন করেছেন",
+      "reviewed": "পর্যালোচিত",
+      "approved": "অনুমোদিত",
+      "rejected": "প্রত্যাখ্যাত",
+      "inactive": "নিষ্ক্রিয়"
+    },
+    "detail": {
+      "back": "তালিকায় ফিরুন",
+      "contact": "যোগাযোগ",
+      "district": "জেলা",
+      "upazila": "উপজেলা",
+      "skillsets": "দক্ষতা",
+      "availability": "সময় প্রাপ্যতা",
+      "motivation": "উদ্দেশ্য/মন্তব্য",
+      "reviewTitle": "পর্যালোচনা ও অবস্থা হালনাগাদ",
+      "statusLabel": "অবস্থা",
+      "status": {
+        "applied": "আবেদন করেছেন",
+        "reviewed": "পর্যালোচিত",
+        "approved": "অনুমোদিত",
+        "rejected": "প্রত্যাখ্যাত",
+        "inactive": "নিষ্ক্রিয়"
+      },
+      "save": "সংরক্ষণ করুন",
+      "saving": "সংরক্ষণ করা হচ্ছে...",
+      "actionError": "কাজটি সম্পন্ন করা যায়নি। আবার চেষ্টা করুন।"
+    }
+  },
+  "volunteerTasks": {
+    "title": "স্বেচ্ছাসেবক টাস্ক ডিসপ্যাচ",
+    "description": "অনুমোদিত স্বেচ্ছাসেবকদের জন্য জিও-ট্যাগ করা মাঠ পর্যায়ের টাস্ক তৈরি ও বরাদ্দ করুন।",
+    "newButton": "নতুন টাস্ক",
+    "empty": "এখনো কোনো টাস্ক নেই।",
+    "noneOption": "— কোনোটি নয় —",
+    "back": "ডিসপ্যাচ বোর্ডে ফিরুন",
+    "table": {
+      "task": "টাস্ক",
+      "type": "ধরন",
+      "district": "জেলা",
+      "status": "অবস্থা",
+      "assigned": "বরাদ্দকৃত",
+      "actions": "বিস্তারিত"
+    },
+    "taskType": {
+      "field_verification": "মাঠ যাচাই",
+      "distribution": "বিতরণ",
+      "documentation": "ডকুমেন্টেশন",
+      "outreach": "প্রচারণা",
+      "event_support": "ইভেন্ট সহায়তা",
+      "other": "অন্যান্য"
+    },
+    "status": {
+      "open": "খোলা",
+      "assigned": "বরাদ্দকৃত",
+      "in_progress": "চলমান",
+      "completed": "সম্পন্ন",
+      "cancelled": "বাতিল"
+    },
+    "form": {
+      "createTitle": "নতুন টাস্ক",
+      "editTitle": "টাস্ক সম্পাদনা করুন",
+      "title": "শিরোনাম (ইংরেজি)",
+      "titleBn": "শিরোনাম (বাংলা)",
+      "description": "বিবরণ (ইংরেজি)",
+      "descriptionBn": "বিবরণ (বাংলা)",
+      "taskType": "টাস্কের ধরন",
+      "status": "অবস্থা",
+      "district": "জেলা",
+      "upazila": "উপজেলা",
+      "mapHint": "টাস্কের অবস্থান নির্ধারণ করতে মানচিত্রে ক্লিক করুন।",
+      "geoLat": "অক্ষাংশ (Latitude)",
+      "geoLng": "দ্রাঘিমাংশ (Longitude)",
+      "assignedVolunteer": "বরাদ্দকৃত স্বেচ্ছাসেবক",
+      "dueDate": "নির্ধারিত তারিখ",
+      "save": "সংরক্ষণ করুন",
+      "saving": "সংরক্ষণ করা হচ্ছে...",
+      "errors": {
+        "required": "এই তথ্যটি আবশ্যক।",
+        "saveFailed": "সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।"
+      }
+    }
+  },
+  "archive": {
+    "title": "জুলাই স্টোরিজ আর্কাইভ",
+    "description": "বই, স্মৃতিচারণ, ছবি, ভিডিও এবং নথিসহ আর্কাইভ আইটেম যোগ, সম্পাদনা, যাচাই ও প্রকাশ করুন।",
+    "newButton": "নতুন আইটেম যোগ করুন",
+    "empty": "কোনো আর্কাইভ আইটেম যোগ করা হয়নি।",
+    "table": {
+      "title": "শিরোনাম",
+      "type": "ধরন",
+      "verification": "যাচাইয়ের অবস্থা",
+      "published": "প্রকাশনা",
+      "actions": "সম্পাদনা"
+    },
+    "verification": {
+      "pending": "মুলতুবি",
+      "verified": "যাচাইকৃত"
+    },
+    "published": {
+      "yes": "প্রকাশিত",
+      "no": "অপ্রকাশিত"
+    },
+    "itemType": {
+      "book": "বই",
+      "story": "স্মৃতিচারণ",
+      "video": "ভিডিও",
+      "image": "ছবি",
+      "news_clipping": "সংবাদ কাটিং",
+      "document": "নথি"
+    },
+    "form": {
+      "createTitle": "নতুন আর্কাইভ আইটেম যোগ করুন",
+      "editTitle": "আর্কাইভ আইটেম সম্পাদনা করুন",
+      "title": "শিরোনাম (ইংরেজি)",
+      "titleBn": "শিরোনাম (বাংলা)",
+      "itemType": "আইটেমের ধরন",
+      "description": "সংক্ষিপ্ত বিবরণ (ইংরেজি)",
+      "descriptionBn": "সংক্ষিপ্ত বিবরণ (বাংলা)",
+      "contentBody": "সম্পূর্ণ বিবরণ (ইংরেজি)",
+      "contentBodyHint": "অনুচ্ছেদগুলো একটি ফাঁকা লাইন দিয়ে আলাদা করুন।",
+      "contentBodyBn": "সম্পূর্ণ বিবরণ (বাংলা)",
+      "sourceCitation": "তথ্যসূত্র",
+      "sourceUrl": "সোর্স URL",
+      "publishedDate": "প্রকাশের তারিখ",
+      "verificationStatus": "যাচাইয়ের অবস্থা",
+      "isPublished": "প্রকাশিত (জনসম্মুখে দৃশ্যমান)",
+      "save": "সংরক্ষণ করুন",
+      "saving": "সংরক্ষণ করা হচ্ছে...",
+      "errors": {
+        "required": "এই তথ্যটি আবশ্যক।",
+        "saveFailed": "সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।"
+      }
+    }
+  },
+  "timeline": {
+    "title": "সময়রেখা ইভেন্ট",
+    "description": "জুলাই ২০২৪ অভ্যুত্থানের কালানুক্রমিক সময়রেখা ইভেন্ট যোগ ও সম্পাদনা করুন।",
+    "newButton": "নতুন ইভেন্ট যোগ করুন",
+    "empty": "কোনো সময়রেখা ইভেন্ট যোগ করা হয়নি।",
+    "noneOption": "— কোনোটি নয় —",
+    "table": {
+      "date": "তারিখ",
+      "title": "শিরোনাম",
+      "category": "ক্যাটাগরি",
+      "published": "প্রকাশনা",
+      "actions": "সম্পাদনা"
+    },
+    "published": {
+      "yes": "প্রকাশিত",
+      "no": "অপ্রকাশিত"
+    },
+    "category": {
+      "protest": "বিক্ষোভ",
+      "crackdown": "দমন-পীড়ন",
+      "casualty": "হতাহত",
+      "political": "রাজনৈতিক",
+      "international": "আন্তর্জাতিক",
+      "other": "অন্যান্য"
+    },
+    "form": {
+      "createTitle": "নতুন সময়রেখা ইভেন্ট যোগ করুন",
+      "editTitle": "সময়রেখা ইভেন্ট সম্পাদনা করুন",
+      "eventDate": "ইভেন্টের তারিখ",
+      "eventTime": "ইভেন্টের সময় (ঐচ্ছিক)",
+      "title": "শিরোনাম (ইংরেজি)",
+      "titleBn": "শিরোনাম (বাংলা)",
+      "description": "বিবরণ (ইংরেজি)",
+      "descriptionBn": "বিবরণ (বাংলা)",
+      "category": "ক্যাটাগরি",
+      "relatedArchiveItem": "সম্পর্কিত আর্কাইভ আইটেম",
+      "sourceCitation": "তথ্যসূত্র",
+      "isPublished": "প্রকাশিত (জনসম্মুখে দৃশ্যমান)",
+      "save": "সংরক্ষণ করুন",
+      "saving": "সংরক্ষণ করা হচ্ছে...",
+      "errors": {
+        "required": "এই তথ্যটি আবশ্যক।",
+        "saveFailed": "সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।"
+      }
+    }
+  }
+}

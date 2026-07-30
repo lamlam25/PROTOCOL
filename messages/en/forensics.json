@@ -1,0 +1,30 @@
+{
+  "dropzone": {
+    "title": "Click to select or drag a file here",
+    "hint": "JPG, PNG, or WebP (15MB max)",
+    "replaceHint": "Click to replace"
+  },
+  "ela": {
+    "title": "Image Manipulation Check (ELA)",
+    "original": "Original image",
+    "heatmap": "Change heatmap",
+    "disclaimer": "This is an automated signal only, not proof — an admin will review it.",
+    "risk": {
+      "none": "Normal",
+      "low": "Slight irregularity",
+      "medium": "Medium risk",
+      "high": "High risk"
+    }
+  },
+  "ocr": {
+    "title": "Document Text Recognition (OCR)",
+    "confidence": "{confidence}% confidence",
+    "disclaimer": "Results may be unreliable on handwritten documents — correct as needed.",
+    "nationalId": "National ID number",
+    "nationalIdPlaceholder": "Not detected",
+    "date": "Date",
+    "datePlaceholder": "Not detected",
+    "showRawText": "Show full recognized text",
+    "noText": "No text was recognized."
+  }
+}

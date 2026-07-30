@@ -1,0 +1,23 @@
+{
+  "title": "JulyStories Archive",
+  "description": "A verified archive of books, personal accounts, images, video, and documents preserving the memory of the July 2024 uprising.",
+  "itemType": {
+    "book": "Book",
+    "story": "Story",
+    "video": "Video",
+    "image": "Image",
+    "news_clipping": "News clipping",
+    "document": "Document"
+  },
+  "card": {
+    "viewDetails": "View details"
+  },
+  "detail": {
+    "back": "Back to archive",
+    "sourceCitation": "Source",
+    "published": "Published",
+    "sourceUrl": "View source"
+  },
+  "empty": "No archive items found.",
+  "notFound": "This archive item could not be found."
+}

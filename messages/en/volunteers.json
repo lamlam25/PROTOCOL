@@ -1,0 +1,26 @@
+{
+  "title": "Become a Volunteer",
+  "description": "Sign up to support field verification, distribution, documentation, and outreach efforts. No account needed — applications are reviewed by our team.",
+  "form": {
+    "fullName": "Full name (English)",
+    "fullNameBn": "Full name (Bangla)",
+    "email": "Email",
+    "phone": "Phone number",
+    "district": "District",
+    "upazila": "Upazila",
+    "skillsets": "Skills",
+    "skillsetsHint": "Comma-separated, e.g. photography, first aid, translation",
+    "availability": "Availability",
+    "availabilityHint": "e.g. weekends, evenings after 6pm",
+    "motivation": "Why do you want to volunteer?",
+    "submit": "Submit application",
+    "submitting": "Submitting...",
+    "successTitle": "Application received",
+    "successDescription": "Thank you — your application has been submitted. Our team will review it and reach out using the contact details you provided.",
+    "errors": {
+      "required": "This field is required.",
+      "invalidEmail": "Please enter a valid email address.",
+      "submitFailed": "Couldn't submit your application. Please try again."
+    }
+  }
+}

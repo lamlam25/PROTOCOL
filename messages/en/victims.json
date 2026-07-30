@@ -1,0 +1,28 @@
+{
+  "title": "Victims & Martyrs",
+  "description": "A verified list of martyrs and injured survivors of the July 2024 mass uprising.",
+  "filters": {
+    "all": "All",
+    "martyr": "Martyrs",
+    "injured": "Injured"
+  },
+  "status": {
+    "martyr": "Martyr",
+    "injured": "Injured"
+  },
+  "card": {
+    "age": "Age {age}",
+    "viewDetails": "View details"
+  },
+  "detail": {
+    "back": "Back to list",
+    "storyTitle": "Story",
+    "incidentDate": "Incident date",
+    "incidentLocation": "Incident location",
+    "district": "District",
+    "relatedCasesTitle": "Related cases",
+    "noRelatedCases": "No published cases yet."
+  },
+  "empty": "No records found.",
+  "notFound": "This record could not be found."
+}

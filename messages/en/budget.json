@@ -1,0 +1,38 @@
+{
+  "title": "Budget Transparency",
+  "description": "A verified, up-to-date account of funds allocated for the rehabilitation, medical care, education, and legal aid of martyrs and injured survivors, alongside their actual disbursement.",
+  "category": {
+    "medical": "Medical",
+    "education": "Education",
+    "housing": "Housing",
+    "legal_aid": "Legal Aid",
+    "livelihood": "Livelihood",
+    "memorial": "Memorial",
+    "other": "Other"
+  },
+  "sankeyTitle": "Fund Flow",
+  "sankeyDescription": "A visual account of how funds move from source, through category, to actual recipients. Hover a node or flow to see the amount.",
+  "allocationsTitle": "Budget Allocations",
+  "allocationsTable": {
+    "title": "Title",
+    "category": "Category",
+    "allocated": "Allocated amount",
+    "source": "Source"
+  },
+  "transactionsTitle": "Disbursement Record",
+  "transactionsTable": {
+    "date": "Date",
+    "recipient": "Recipient",
+    "allocation": "Allocation",
+    "amount": "Amount",
+    "description": "Description",
+    "onchain": "On-chain verification"
+  },
+  "onchain": {
+    "pending": "Anchoring pending",
+    "view": "View transaction"
+  },
+  "totalAllocated": "Total Allocated",
+  "totalDisbursed": "Total Disbursed",
+  "empty": "No records found."
+}

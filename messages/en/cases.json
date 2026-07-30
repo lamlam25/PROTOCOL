@@ -1,0 +1,33 @@
+{
+  "title": "Case Tracker",
+  "description": "The legal journey of cases arising from the July 2024 mass uprising — from filing through to verdict.",
+  "status": {
+    "filed": "Filed",
+    "investigation": "Under Investigation",
+    "under_trial": "Under Trial",
+    "verdict": "Verdict Delivered",
+    "closed": "Closed"
+  },
+  "card": {
+    "caseNumber": "Case No. {number}"
+  },
+  "detail": {
+    "back": "Back to list",
+    "caseNumber": "Case number",
+    "court": "Court",
+    "filedDate": "Filed date",
+    "lawyer": "Assigned lawyer",
+    "victimLinkPrefix": "Related to:",
+    "timelineTitle": "Case timeline",
+    "milestone": {
+      "filed": "Case filed",
+      "hearing": "Hearing",
+      "evidence_submitted": "Evidence submitted",
+      "verdict": "Verdict",
+      "other": "Update"
+    },
+    "noUpdates": "No updates have been recorded yet."
+  },
+  "empty": "No cases found at this time.",
+  "notFound": "This case could not be found."
+}

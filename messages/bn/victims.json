@@ -1,0 +1,28 @@
+{
+  "title": "শহীদ ও আহত",
+  "description": "২০২৪ সালের জুলাই গণঅভ্যুত্থানে শহীদ ও আহতদের যাচাইকৃত তালিকা।",
+  "filters": {
+    "all": "সবাই",
+    "martyr": "শহীদ",
+    "injured": "আহত"
+  },
+  "status": {
+    "martyr": "শহীদ",
+    "injured": "আহত"
+  },
+  "card": {
+    "age": "বয়স {age} বছর",
+    "viewDetails": "বিস্তারিত দেখুন"
+  },
+  "detail": {
+    "back": "তালিকায় ফিরুন",
+    "storyTitle": "সংক্ষিপ্ত বিবরণ",
+    "incidentDate": "ঘটনার তারিখ",
+    "incidentLocation": "ঘটনাস্থল",
+    "district": "জেলা",
+    "relatedCasesTitle": "সংশ্লিষ্ট মামলা",
+    "noRelatedCases": "এখনো কোনো প্রকাশিত মামলা নেই।"
+  },
+  "empty": "এই মুহূর্তে কোনো তথ্য পাওয়া যায়নি।",
+  "notFound": "এই রেকর্ডটি পাওয়া যায়নি।"
+}

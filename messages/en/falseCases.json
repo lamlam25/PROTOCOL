@@ -1,0 +1,52 @@
+{
+  "title": "False Cases",
+  "intro": "If you or someone you know has been targeted with a false or fabricated case related to the July uprising, you can securely submit timestamped evidence here. Every submission is forensically checked, and only you and a verifying admin can see it.",
+  "points": {
+    "private": {
+      "title": "Fully private",
+      "body": "Your submission is never shown publicly — only you and a reviewing admin can see it."
+    },
+    "forensic": {
+      "title": "Forensically checked",
+      "body": "Every photo or document is screened for manipulation and duplicates, strengthening the credibility of your evidence."
+    },
+    "track": {
+      "title": "Track its status",
+      "body": "Log in to check your submission's review status at any time."
+    }
+  },
+  "cta": "Submit evidence",
+  "loginNote": "Submitting evidence requires logging in with your email — no password needed.",
+  "loginRequiredTitle": "Login required",
+  "loginRequiredDescription": "You need to log in with your email before submitting evidence, so you can check its status later.",
+  "loginCta": "Log in",
+  "submitTitle": "Submit false-case evidence",
+  "submitDescription": "Fill in the accused person's details, the circumstances, and supporting evidence (image or document) below. Your evidence is analyzed automatically before submission.",
+  "form": {
+    "evidenceLabel": "Supporting evidence (image or document)",
+    "analyzing": "Analyzing evidence...",
+    "accusedFullName": "Accused person's name (English)",
+    "accusedFullNameBn": "Accused person's name (Bangla)",
+    "caseReferenceNumber": "Case reference number (if known)",
+    "district": "District",
+    "description": "Description of the incident and why this is a false case",
+    "alibiTimestamp": "Your whereabouts at the time (alibi)",
+    "contactPhone": "Contact phone",
+    "contactEmail": "Contact email",
+    "duplicateWarningTitle": "Possible duplicate submission",
+    "duplicateWarningDescription": "A similar file appears to have already been submitted. You can still submit — an admin will review it.",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "successTitle": "Submitted successfully",
+    "successDescription": "Your evidence has been submitted and is awaiting admin review. We'll reach out using your provided contact details if needed.",
+    "errors": {
+      "required": "This field is required.",
+      "descriptionTooShort": "Please add a bit more detail (at least 10 characters).",
+      "invalidEmail": "Please enter a valid email address.",
+      "notLoggedIn": "Your session has expired. Please log in again.",
+      "uploadFailed": "File upload failed. Please try again.",
+      "submitFailed": "Submission failed. Please try again.",
+      "analysisFailed": "Could not analyze the file. Try a different file."
+    }
+  }
+}

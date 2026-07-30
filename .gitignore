@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# july ledger: mock storage adapter (dev-only local files)
+/.local-ipfs-store
+
+# july ledger: contracts is a separate npm project
+/contracts/node_modules
+/contracts/artifacts
+/contracts/cache
+/contracts/typechain-types
+/contracts/.env
+
+# claude code local settings
+.claude/settings.local.json

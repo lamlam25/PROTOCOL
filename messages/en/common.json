@@ -1,0 +1,46 @@
+{
+  "siteName": "July Ledger",
+  "siteDescription": "A transparent, forensically verified digital archive and justice platform for the martyrs, injured, and persecuted of Bangladesh's July 2024 mass uprising.",
+  "nav": {
+    "victims": "Victims & Martyrs",
+    "cases": "Case Tracker",
+    "falseCases": "False Cases",
+    "budget": "Budget",
+    "volunteers": "Volunteer",
+    "stories": "JulyStories",
+    "timeline": "Timeline",
+    "about": "About",
+    "login": "Log in",
+    "adminPanel": "Admin Panel"
+  },
+  "language": {
+    "label": "Language",
+    "bn": "বাংলা",
+    "en": "English"
+  },
+  "theme": {
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "comingSoon": {
+    "title": "Coming Soon",
+    "description": "This section is under construction and will launch soon with complete, verified data."
+  },
+  "error": {
+    "title": "Something went wrong",
+    "body": "Please try again. If the problem continues, refresh the page.",
+    "retry": "Try again",
+    "home": "Go home"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you asked for doesn't exist or may have moved.",
+    "home": "Back to home"
+  },
+  "footer": {
+    "tagline": "Truth preserved. Justice made visible.",
+    "rights": "All rights reserved."
+  }
+}

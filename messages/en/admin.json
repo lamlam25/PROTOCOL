@@ -1,0 +1,463 @@
+{
+  "dashboard": {
+    "title": "Admin Dashboard",
+    "welcome": "Welcome, {name}. From this panel you can manage victims, cases, budget, volunteers, and forensic review.",
+    "signOut": "Sign out",
+    "forensicsQueueLink": "Forensics Review Queue",
+    "links": {
+      "victims": "Victims & Martyrs",
+      "cases": "Case Management",
+      "lawyers": "Lawyer Directory",
+      "falseCases": "False-Case Evidence Review",
+      "volunteers": "Volunteer Applications",
+      "volunteerTasks": "Volunteer Task Dispatch",
+      "archive": "JulyStories Archive",
+      "timeline": "Timeline Events"
+    }
+  },
+  "forensics": {
+    "title": "Forensics Review Queue",
+    "description": "Every automatically analyzed file is listed here for human review.",
+    "empty": "Nothing awaiting review.",
+    "table": {
+      "submitted": "Submitted",
+      "type": "Type",
+      "risk": "Risk",
+      "reviewStatus": "Review status"
+    },
+    "reviewStatus": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "relatedTypes": {
+      "false_case_evidence": "False-case evidence",
+      "victims": "Victim record",
+      "archive_items": "Archive item",
+      "budget_transactions": "Budget transaction"
+    },
+    "viewDetails": "View details",
+    "detail": {
+      "back": "Back to queue",
+      "notFound": "This forensic record could not be found.",
+      "originalFile": "Original file",
+      "heatmap": "ELA heatmap",
+      "heatmapUnavailable": "No heatmap was stored.",
+      "ocrText": "Recognized text",
+      "noOcrText": "No text was recognized.",
+      "extractedFields": "Extracted fields",
+      "nationalId": "National ID number",
+      "date": "Date",
+      "duplicateMatches": "Possible duplicates",
+      "noDuplicates": "No duplicates found.",
+      "sha256": "SHA-256 hash",
+      "submittedFields": "Submitted case details",
+      "accusedFullName": "Accused person",
+      "description": "Description",
+      "contact": "Contact",
+      "approve": "Approve",
+      "reject": "Reject",
+      "approving": "Approving...",
+      "rejecting": "Rejecting...",
+      "onchainAnchored": "Anchored on-chain",
+      "mockChainNote": "Mock chain — not a real Polygonscan transaction.",
+      "onchainVerified": "Verified on-chain",
+      "contractAddress": "Contract address",
+      "actionError": "Couldn't complete the action. Please try again."
+    }
+  },
+  "lawyers": {
+    "title": "Lawyer Directory",
+    "description": "Manage the lawyers assigned to cases.",
+    "newButton": "Add Lawyer",
+    "empty": "No lawyers added yet.",
+    "table": {
+      "name": "Name",
+      "barRegNo": "Bar registration no.",
+      "specialization": "Specialization",
+      "status": "Status",
+      "actions": "Edit"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "form": {
+      "createTitle": "Add Lawyer",
+      "editTitle": "Edit Lawyer",
+      "fullName": "Full name (English)",
+      "fullNameBn": "Full name (Bangla)",
+      "barRegistrationNo": "Bar registration number",
+      "specialization": "Specialization",
+      "specializationHint": "Comma-separated, e.g. criminal_law, human_rights",
+      "contactEmail": "Contact email",
+      "contactPhone": "Contact phone",
+      "isActive": "Active (visible to the public)",
+      "save": "Save",
+      "saving": "Saving...",
+      "errors": {
+        "required": "This field is required.",
+        "invalidEmail": "Please enter a valid email address.",
+        "saveFailed": "Couldn't save. Please try again."
+      }
+    }
+  },
+  "victims": {
+    "title": "Victims & Martyrs",
+    "description": "Add, edit, verify, and publish victim and martyr records.",
+    "newButton": "Add Record",
+    "empty": "No records added yet.",
+    "table": {
+      "name": "Name",
+      "status": "Type",
+      "verification": "Verification",
+      "published": "Published",
+      "actions": "Edit"
+    },
+    "verification": {
+      "pending": "Pending",
+      "verified": "Verified",
+      "flagged": "Flagged"
+    },
+    "published": {
+      "yes": "Published",
+      "no": "Unpublished"
+    },
+    "form": {
+      "createTitle": "Add Record",
+      "editTitle": "Edit Record",
+      "fullName": "Full name (English)",
+      "fullNameBn": "Full name (Bangla)",
+      "status": "Type",
+      "statusOptions": {
+        "martyr": "Martyr",
+        "injured": "Injured"
+      },
+      "age": "Age",
+      "gender": "Gender",
+      "district": "District",
+      "upazila": "Upazila",
+      "incidentDate": "Incident date",
+      "incidentLocation": "Incident location (English)",
+      "incidentLocationBn": "Incident location (Bangla)",
+      "storySummary": "Story summary (English)",
+      "storySummaryBn": "Story summary (Bangla)",
+      "isPublished": "Published (visible to the public)",
+      "verificationStatus": "Verification status",
+      "save": "Save",
+      "saving": "Saving...",
+      "errors": {
+        "required": "This field is required.",
+        "saveFailed": "Couldn't save. Please try again."
+      }
+    }
+  },
+  "cases": {
+    "title": "Case Management",
+    "description": "Add cases, edit them, assign lawyers, and manage progress updates.",
+    "newButton": "Add Case",
+    "empty": "No cases added yet.",
+    "noneOption": "— None —",
+    "table": {
+      "title": "Title",
+      "caseNumber": "Case number",
+      "status": "Status",
+      "published": "Published",
+      "actions": "Edit"
+    },
+    "published": {
+      "yes": "Published",
+      "no": "Unpublished"
+    },
+    "caseType": {
+      "criminal_prosecution": "Criminal prosecution",
+      "rehabilitation": "Rehabilitation",
+      "compensation": "Compensation"
+    },
+    "status": {
+      "filed": "Filed",
+      "investigation": "Under investigation",
+      "under_trial": "Under trial",
+      "verdict": "Verdict delivered",
+      "closed": "Closed"
+    },
+    "form": {
+      "createTitle": "Add Case",
+      "editTitle": "Edit Case",
+      "caseNumber": "Case number",
+      "title": "Title (English)",
+      "titleBn": "Title (Bangla)",
+      "description": "Description (English)",
+      "descriptionBn": "Description (Bangla)",
+      "caseType": "Case type",
+      "status": "Status",
+      "victim": "Related victim",
+      "assignedLawyer": "Assigned lawyer",
+      "courtName": "Court name",
+      "filedDate": "Filed date",
+      "isPublished": "Published (visible to the public)",
+      "save": "Save",
+      "saving": "Saving...",
+      "errors": {
+        "required": "This field is required.",
+        "saveFailed": "Couldn't save. Please try again."
+      }
+    },
+    "updates": {
+      "title": "Case Progress Timeline",
+      "addTitle": "Add an update",
+      "updateText": "Update text (English)",
+      "updateTextBn": "Update text (Bangla)",
+      "milestoneType": "Milestone type",
+      "milestoneOptions": {
+        "filed": "Filed",
+        "hearing": "Hearing",
+        "evidence_submitted": "Evidence submitted",
+        "verdict": "Verdict",
+        "other": "Update"
+      },
+      "updateDate": "Date",
+      "add": "Add",
+      "adding": "Adding...",
+      "delete": "Delete",
+      "empty": "No updates added yet.",
+      "errors": {
+        "required": "Update text is required.",
+        "saveFailed": "Couldn't save. Please try again."
+      }
+    }
+  },
+  "falseCases": {
+    "title": "False-Case Evidence Review",
+    "description": "Review evidence citizens have submitted for false cases and update its status.",
+    "empty": "No submissions yet.",
+    "table": {
+      "submitted": "Submitted",
+      "accused": "Accused person",
+      "district": "District",
+      "status": "Status",
+      "actions": "Details"
+    },
+    "status": {
+      "submitted": "Submitted",
+      "under_review": "Under review",
+      "verified": "Verified",
+      "rejected": "Rejected"
+    },
+    "detail": {
+      "back": "Back to list",
+      "caseReference": "Case reference number",
+      "district": "District",
+      "alibiTimestamp": "Alibi timestamp",
+      "description": "Description",
+      "contact": "Contact",
+      "evidenceTitle": "Attached evidence",
+      "viewForensicAnalysis": "View forensic analysis",
+      "filesCount": "{count} file(s) attached in total.",
+      "reviewTitle": "Review & status update",
+      "statusLabel": "Status",
+      "status": {
+        "submitted": "Submitted",
+        "under_review": "Under review",
+        "verified": "Verified",
+        "rejected": "Rejected"
+      },
+      "reviewNotes": "Review notes",
+      "save": "Save",
+      "saving": "Saving...",
+      "actionError": "Couldn't complete the action. Please try again."
+    }
+  },
+  "volunteers": {
+    "title": "Volunteer Applications",
+    "description": "Review volunteer applications and update their status.",
+    "empty": "No applications yet.",
+    "table": {
+      "name": "Name",
+      "district": "District",
+      "skills": "Skills",
+      "status": "Status",
+      "actions": "Details"
+    },
+    "status": {
+      "applied": "Applied",
+      "reviewed": "Reviewed",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "inactive": "Inactive"
+    },
+    "detail": {
+      "back": "Back to list",
+      "contact": "Contact",
+      "district": "District",
+      "upazila": "Upazila",
+      "skillsets": "Skillsets",
+      "availability": "Availability",
+      "motivation": "Motivation",
+      "reviewTitle": "Review & status update",
+      "statusLabel": "Status",
+      "status": {
+        "applied": "Applied",
+        "reviewed": "Reviewed",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "inactive": "Inactive"
+      },
+      "save": "Save",
+      "saving": "Saving...",
+      "actionError": "Couldn't complete the action. Please try again."
+    }
+  },
+  "volunteerTasks": {
+    "title": "Volunteer Task Dispatch",
+    "description": "Create and assign geo-tagged field tasks to approved volunteers.",
+    "newButton": "New Task",
+    "empty": "No tasks yet.",
+    "noneOption": "— None —",
+    "back": "Back to dispatch board",
+    "table": {
+      "task": "Task",
+      "type": "Type",
+      "district": "District",
+      "status": "Status",
+      "assigned": "Assigned to",
+      "actions": "Details"
+    },
+    "taskType": {
+      "field_verification": "Field verification",
+      "distribution": "Distribution",
+      "documentation": "Documentation",
+      "outreach": "Outreach",
+      "event_support": "Event support",
+      "other": "Other"
+    },
+    "status": {
+      "open": "Open",
+      "assigned": "Assigned",
+      "in_progress": "In progress",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "form": {
+      "createTitle": "New Task",
+      "editTitle": "Edit Task",
+      "title": "Title (English)",
+      "titleBn": "Title (Bangla)",
+      "description": "Description (English)",
+      "descriptionBn": "Description (Bangla)",
+      "taskType": "Task type",
+      "status": "Status",
+      "district": "District",
+      "upazila": "Upazila",
+      "mapHint": "Click the map to set the task location.",
+      "geoLat": "Latitude",
+      "geoLng": "Longitude",
+      "assignedVolunteer": "Assigned volunteer",
+      "dueDate": "Due date",
+      "save": "Save",
+      "saving": "Saving...",
+      "errors": {
+        "required": "This field is required.",
+        "saveFailed": "Couldn't save. Please try again."
+      }
+    }
+  },
+  "archive": {
+    "title": "JulyStories Archive",
+    "description": "Add, edit, verify, and publish archive items — books, stories, images, video, and documents.",
+    "newButton": "Add Item",
+    "empty": "No archive items added yet.",
+    "table": {
+      "title": "Title",
+      "type": "Type",
+      "verification": "Verification",
+      "published": "Published",
+      "actions": "Edit"
+    },
+    "verification": {
+      "pending": "Pending",
+      "verified": "Verified"
+    },
+    "published": {
+      "yes": "Published",
+      "no": "Unpublished"
+    },
+    "itemType": {
+      "book": "Book",
+      "story": "Story",
+      "video": "Video",
+      "image": "Image",
+      "news_clipping": "News clipping",
+      "document": "Document"
+    },
+    "form": {
+      "createTitle": "Add Archive Item",
+      "editTitle": "Edit Archive Item",
+      "title": "Title (English)",
+      "titleBn": "Title (Bangla)",
+      "itemType": "Item type",
+      "description": "Description (English)",
+      "descriptionBn": "Description (Bangla)",
+      "contentBody": "Full content (English)",
+      "contentBodyHint": "Separate paragraphs with a blank line.",
+      "contentBodyBn": "Full content (Bangla)",
+      "sourceCitation": "Source citation",
+      "sourceUrl": "Source URL",
+      "publishedDate": "Published date",
+      "verificationStatus": "Verification status",
+      "isPublished": "Published (visible to the public)",
+      "save": "Save",
+      "saving": "Saving...",
+      "errors": {
+        "required": "This field is required.",
+        "saveFailed": "Couldn't save. Please try again."
+      }
+    }
+  },
+  "timeline": {
+    "title": "Timeline Events",
+    "description": "Add and edit chronological timeline events for the July 2024 uprising.",
+    "newButton": "Add Event",
+    "empty": "No timeline events added yet.",
+    "noneOption": "— None —",
+    "table": {
+      "date": "Date",
+      "title": "Title",
+      "category": "Category",
+      "published": "Published",
+      "actions": "Edit"
+    },
+    "published": {
+      "yes": "Published",
+      "no": "Unpublished"
+    },
+    "category": {
+      "protest": "Protest",
+      "crackdown": "Crackdown",
+      "casualty": "Casualty",
+      "political": "Political",
+      "international": "International",
+      "other": "Other"
+    },
+    "form": {
+      "createTitle": "Add Timeline Event",
+      "editTitle": "Edit Timeline Event",
+      "eventDate": "Event date",
+      "eventTime": "Event time (optional)",
+      "title": "Title (English)",
+      "titleBn": "Title (Bangla)",
+      "description": "Description (English)",
+      "descriptionBn": "Description (Bangla)",
+      "category": "Category",
+      "relatedArchiveItem": "Related archive item",
+      "sourceCitation": "Source citation",
+      "isPublished": "Published (visible to the public)",
+      "save": "Save",
+      "saving": "Saving...",
+      "errors": {
+        "required": "This field is required.",
+        "saveFailed": "Couldn't save. Please try again."
+      }
+    }
+  }
+}

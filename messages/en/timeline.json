@@ -1,0 +1,14 @@
+{
+  "title": "Timeline",
+  "description": "A chronological record of the July 2024 mass uprising, from July 1 to August 5, 2024.",
+  "category": {
+    "protest": "Protest",
+    "crackdown": "Crackdown",
+    "casualty": "Casualty",
+    "political": "Political",
+    "international": "International",
+    "other": "Other"
+  },
+  "relatedStory": "Read full story",
+  "empty": "No timeline entries have been added yet."
+}

@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "title": "July 2024: A Ledger of Truth",
+    "subtitle": "A decentralized, forensically verified justice and rehabilitation platform for the martyrs, injured, and persecuted.",
+    "viewVictims": "View Victims & Martyrs",
+    "viewBudget": "View Budget Transparency"
+  },
+  "mission": {
+    "title": "Our Mission",
+    "body": "The July 2024 mass uprising claimed lives, left thousands injured, and left many facing fabricated charges. July Ledger preserves their stories, brings transparency to relief and budget allocation, and makes every record tamper-proof through forensic verification and blockchain anchoring."
+  },
+  "pillars": {
+    "title": "What This Platform Covers",
+    "victims": {
+      "title": "Victims & Martyrs",
+      "description": "Verified records of the martyred and injured, their stories, and current status."
+    },
+    "cases": {
+      "title": "Case Tracker",
+      "description": "Legal case progress, assigned counsel, and the latest updates."
+    },
+    "falseCases": {
+      "title": "False Cases",
+      "description": "A secure evidence pipeline for those facing fabricated charges."
+    },
+    "budget": {
+      "title": "Budget Transparency",
+      "description": "A full account of allocated funds and exactly where they go."
+    },
+    "volunteers": {
+      "title": "Volunteers",
+      "description": "Apply to join the effort on the ground, by skill and district."
+    },
+    "stories": {
+      "title": "JulyStories",
+      "description": "A verified archive of photos, videos, documents, and books."
+    }
+  }
+}
