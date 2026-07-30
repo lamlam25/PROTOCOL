@@ -67,6 +67,8 @@ export function LoginForm({ mode }: { mode: LoginMode }) {
       const message = error.message.toLowerCase();
       if (message.includes("rate limit")) {
         setErrorMessage(t("errors.rateLimit"));
+      } else if (error.status && error.status >= 500) {
+        setErrorMessage(t("errors.emailService"));
       } else if (
         mode === "admin" &&
         message.includes("signups not allowed")
