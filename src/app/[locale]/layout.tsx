@@ -7,9 +7,8 @@ import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PublicNav } from "@/components/layout/public-nav";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,8 +26,9 @@ export async function generateMetadata(props: {
   const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: "common" });
   const localeCode = locale === "bn" ? "bn_BD" : "en_US";
+  const siteUrl = getSiteUrl();
   return {
-    metadataBase: new URL(SITE_URL),
+    metadataBase: new URL(siteUrl),
     title: t("siteName"),
     description: t("siteDescription"),
     alternates: {
