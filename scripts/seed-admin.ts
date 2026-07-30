@@ -1,11 +1,12 @@
 /**
- * Promotes an existing Supabase Auth user to the admin role.
- * The user must have already signed in at least once via /login (magic
- * link) so their profiles row exists — this script only flips the role.
+ * Creates or promotes a Supabase Auth user to the admin role.
+ * New accounts are confirmed without a password; the administrator still
+ * signs in through the normal one-time email link.
  *
  * Usage: npm run seed:admin -- someone@example.com
  */
 import { createClient } from "@supabase/supabase-js";
+import type { User } from "@supabase/supabase-js";
 import type { Database } from "../src/types/database.types";
 
 async function main() {
@@ -29,7 +30,7 @@ async function main() {
   });
 
   // GoTrue's admin API has no getUserByEmail; list and match. Fine at this scale.
-  let user: { id: string; email?: string } | undefined;
+  let user: User | undefined;
   let page = 1;
   while (!user) {
     const { data, error } = await supabase.auth.admin.listUsers({
@@ -42,23 +43,39 @@ async function main() {
     page += 1;
   }
 
+  let created = false;
   if (!user) {
-    console.error(
-      `No auth user found for ${email} — they must sign in at /login at least once first.`
-    );
-    process.exit(1);
+    const { data, error } = await supabase.auth.admin.createUser({
+      email,
+      email_confirm: true,
+    });
+    if (error) throw error;
+    user = data.user;
+    created = true;
   }
 
-  const { error: updateError } = await supabase
+  const { error: profileError } = await supabase
     .from("profiles")
-    .update({ role: "admin" })
-    .eq("id", user.id);
+    .upsert({ id: user.id, role: "admin" }, { onConflict: "id" });
 
-  if (updateError) throw updateError;
+  if (profileError) throw profileError;
 
-  console.log(`${email} (${user.id}) is now an admin.`);
+  const { error: claimsError } = await supabase.auth.admin.updateUserById(
+    user.id,
+    {
+      app_metadata: {
+        ...user.app_metadata,
+        role: "admin",
+      },
+    }
+  );
+  if (claimsError) throw claimsError;
+
   console.log(
-    "They'll need to sign out and back in (or wait for their token to refresh) for the new role claim to take effect."
+    `${email} (${user.id}) ${created ? "was created and approved" : "is now approved"} as an admin.`
+  );
+  console.log(
+    "Request a fresh link from /login. Existing sessions must sign out first."
   );
 }
 

@@ -64,7 +64,17 @@ export function LoginForm({ mode }: { mode: LoginMode }) {
     });
 
     if (error) {
-      setErrorMessage(error.message || t("errorGeneric"));
+      const message = error.message.toLowerCase();
+      if (message.includes("rate limit")) {
+        setErrorMessage(t("errors.rateLimit"));
+      } else if (
+        mode === "admin" &&
+        message.includes("signups not allowed")
+      ) {
+        setErrorMessage(t("errors.notAdmin"));
+      } else {
+        setErrorMessage(error.message || t("errorGeneric"));
+      }
       setStatus("error");
       return;
     }
