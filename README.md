@@ -2,6 +2,12 @@
 
 PROTOCOL36 is a bilingual public accountability, rehabilitation, justice, and historical archive platform for Bangladesh's July 2024 mass uprising.
 
+## Documentation
+
+The complete as-built architecture, workflows, database/RLS design, forensics,
+blockchain model, setup, deployment, security, operations, and roadmap are documented
+in [docs/SYSTEM_DESIGN.md](docs/SYSTEM_DESIGN.md).
+
 ## Access Model
 
 - **Citizen portal:** citizens create an email-and-password account before submitting victim or representative evidence. Registration is server-side, rate-limited, and opens the protected evidence uploader without depending on an email provider. Public records, budgets, case progress, JulyStories, and the timeline remain readable without an account.
@@ -15,7 +21,9 @@ Next.js 16, React 19, TypeScript, Tailwind CSS 4, next-intl, Supabase Auth/Postg
 
 1. Copy `.env.example` to `.env.local` and add the Supabase keys.
 2. Apply the Supabase migrations.
-3. Create or promote an admin with `npm run seed:admin`.
+3. Set `ADMIN_INITIAL_PASSWORD` in the current shell and create or promote an
+   admin with `npm run seed:admin -- administrator@example.com`. Remove the
+   temporary environment variable after the command.
 4. Install the AI checker with `python -m pip install -r services/ai_checker/requirements.txt`.
 5. Start the AI checker with `npm run ai:dev`.
 6. In another terminal, start the app with `npm run dev`.
@@ -32,6 +40,11 @@ npm run seed:admin -- administrator@example.com
 Email-link infrastructure can be restored later without changing protected routes. The callback still supports PKCE authorization codes and SSR-safe token hashes, and the local Supabase template remains at [supabase/templates/protocol-magic-link.html](supabase/templates/protocol-magic-link.html).
 
 Citizen email addresses are not ownership-verified while SMTP is unavailable. Do not use the email field alone as legal proof of a submitter's identity; evidence provenance and contact details still require administrator review.
+
+The implemented storage provider is currently the local `mock` adapter. A durable,
+private production adapter must be implemented before enabling evidence intake on a
+serverless deployment; the Pinata environment fields are placeholders, not a
+completed integration.
 
 ## AI Image Screening
 

@@ -1,0 +1,2 @@
+-- Intentionally empty.
+-- Use `npm run seed:demo` when fictional demonstration data is wanted.

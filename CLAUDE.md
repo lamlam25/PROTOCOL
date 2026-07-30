@@ -2,7 +2,7 @@
 
 # PROTOCOL36
 
-Bilingual (bn/en) decentralized rehabilitation, justice & archive platform for Bangladesh's July 2024 Mass Uprising. Two access domains: Admin (magic-link authentication and full access) and Citizen (public, no-login browsing and private, account-free false-case evidence intake).
+Bilingual (bn/en) decentralized rehabilitation, justice & archive platform for Bangladesh's July 2024 Mass Uprising. Two access domains: Admin (approved password-authenticated accounts with full management access) and Citizen (public browsing plus password-authenticated private evidence intake and status tracking). The email-link callback remains available for a future SMTP restoration, but password authentication is the operational default.
 
 Full architecture/design decisions: `C:\Users\user\.claude\plans\lets-build-a-project-enumerated-papert.md` (read this before large structural changes).
 

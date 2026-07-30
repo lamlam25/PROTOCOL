@@ -1,7 +1,7 @@
 /**
  * Creates or promotes a Supabase Auth user to the admin role.
- * New accounts are confirmed without a password; the administrator still
- * signs in through the normal one-time email link.
+ * Set ADMIN_INITIAL_PASSWORD in the current shell to create a usable
+ * password-authenticated account or deliberately reset an existing password.
  *
  * Usage: npm run seed:admin -- someone@example.com
  */
@@ -10,9 +10,23 @@ import type { User } from "@supabase/supabase-js";
 import type { Database } from "../src/types/database.types";
 
 async function main() {
-  const email = process.argv[2];
+  const email = process.argv[2]?.trim().toLowerCase();
+  const initialPassword = process.env.ADMIN_INITIAL_PASSWORD;
   if (!email) {
     console.error("Usage: npm run seed:admin -- <email>");
+    process.exit(1);
+  }
+  if (
+    initialPassword &&
+    (initialPassword.length < 10 ||
+      initialPassword.length > 72 ||
+      !/[a-z]/.test(initialPassword) ||
+      !/[A-Z]/.test(initialPassword) ||
+      !/[0-9]/.test(initialPassword))
+  ) {
+    console.error(
+      "ADMIN_INITIAL_PASSWORD must be 10-72 characters and include lowercase, uppercase, and a digit."
+    );
     process.exit(1);
   }
 
@@ -45,9 +59,17 @@ async function main() {
 
   let created = false;
   if (!user) {
+    if (!initialPassword) {
+      console.error(
+        "A new admin needs a password. Set ADMIN_INITIAL_PASSWORD in the current shell and run the command again."
+      );
+      process.exit(1);
+    }
     const { data, error } = await supabase.auth.admin.createUser({
       email,
+      password: initialPassword,
       email_confirm: true,
+      app_metadata: { role: "admin" },
     });
     if (error) throw error;
     user = data.user;
@@ -63,6 +85,7 @@ async function main() {
   const { error: claimsError } = await supabase.auth.admin.updateUserById(
     user.id,
     {
+      ...(initialPassword ? { password: initialPassword } : {}),
       app_metadata: {
         ...user.app_metadata,
         role: "admin",
@@ -75,7 +98,9 @@ async function main() {
     `${email} (${user.id}) ${created ? "was created and approved" : "is now approved"} as an admin.`
   );
   console.log(
-    "Request a fresh link from /login. Existing sessions must sign out first."
+    initialPassword
+      ? "The password was set. Sign in through /login; existing sessions must sign out first."
+      : "The existing password was kept. Sign in through /login; existing sessions must sign out first."
   );
 }
 
