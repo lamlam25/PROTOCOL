@@ -4,8 +4,8 @@ PROTOCOL36 is a bilingual public accountability, rehabilitation, justice, and hi
 
 ## Access Model
 
-- **Citizen portal:** citizens authenticate by email magic link before submitting victim or representative evidence. A verified link opens the protected evidence uploader. Public records, budgets, case progress, JulyStories, and the timeline remain readable without an account.
-- **Admin portal:** approved administrators authenticate through the separate admin magic-link page. Role checks protect every admin route and allow review, approval, or rejection of submitted evidence.
+- **Citizen portal:** citizens create an email-and-password account before submitting victim or representative evidence. Registration is server-side, rate-limited, and opens the protected evidence uploader without depending on an email provider. Public records, budgets, case progress, JulyStories, and the timeline remain readable without an account.
+- **Admin portal:** approved administrators authenticate through the separate password login page. Role checks protect every admin route and allow review, approval, or rejection of submitted evidence.
 
 ## Stack
 
@@ -21,21 +21,17 @@ Next.js 16, React 19, TypeScript, Tailwind CSS 4, next-intl, Supabase Auth/Postg
 6. In another terminal, start the app with `npm run dev`.
 7. Open `http://localhost:3000`.
 
-## Magic Links
+## Authentication
 
-The callback supports both PKCE authorization codes and SSR-safe token hashes. For local Supabase, the configured template is [supabase/templates/protocol-magic-link.html](supabase/templates/protocol-magic-link.html).
+Password authentication is the operational default for citizens and administrators. Citizen registration is handled by a same-origin, rate-limited server endpoint; it creates only `citizen` accounts. Administrators must be explicitly created or promoted with:
 
-For a hosted Supabase project:
-
-1. Set **Authentication > URL Configuration > Site URL** to the deployed `NEXT_PUBLIC_SITE_URL`.
-2. Add `https://your-domain.example/**` to **Additional Redirect URLs**.
-3. In **Authentication > Email Templates > Magic Link**, use a link with this target:
-
-```html
-{{ .RedirectTo }}&token_hash={{ .TokenHash }}&type=email
+```bash
+npm run seed:admin -- administrator@example.com
 ```
 
-This lets the server verify the one-time token and write the session cookie even when the email opens outside the browser that requested the link. Citizen login permits account creation and redirects successful authentication to the evidence uploader. Admin login disables account creation and the callback rejects users without an admin profile.
+Email-link infrastructure can be restored later without changing protected routes. The callback still supports PKCE authorization codes and SSR-safe token hashes, and the local Supabase template remains at [supabase/templates/protocol-magic-link.html](supabase/templates/protocol-magic-link.html).
+
+Citizen email addresses are not ownership-verified while SMTP is unavailable. Do not use the email field alone as legal proof of a submitter's identity; evidence provenance and contact details still require administrator review.
 
 ## AI Image Screening
 

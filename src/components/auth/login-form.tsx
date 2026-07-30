@@ -3,15 +3,16 @@
 import { useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
-import { MailCheck, TriangleAlert } from "lucide-react";
+import { KeyRound, TriangleAlert } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
-type Status = "idle" | "submitting" | "sent" | "error";
+type Status = "idle" | "submitting" | "error";
 type LoginMode = "admin" | "citizen";
+type CitizenAction = "signin" | "signup";
 const CALLBACK_ERRORS = new Set([
   "provider",
   "missingToken",
@@ -42,6 +43,9 @@ export function LoginForm({ mode }: { mode: LoginMode }) {
       : null;
 
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [citizenAction, setCitizenAction] =
+    useState<CitizenAction>("signin");
   const [status, setStatus] = useState<Status>(
     callbackError ? "error" : "idle"
   );
@@ -55,25 +59,36 @@ export function LoginForm({ mode }: { mode: LoginMode }) {
     setErrorMessage(null);
 
     const supabase = createClient();
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: {
-        shouldCreateUser: mode === "citizen",
-        emailRedirectTo: `${window.location.origin}/${locale}/callback?mode=${mode}&next=${encodeURIComponent(next)}`,
-      },
-    });
+    if (mode === "citizen" && citizenAction === "signup") {
+      const response = await fetch("/api/auth/citizen-register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      if (!response.ok) {
+        setErrorMessage(
+          response.status === 409
+            ? t("errors.accountExists")
+            : response.status === 429
+              ? t("errors.registrationLimit")
+              : t("errors.registration")
+        );
+        setStatus("error");
+        return;
+      }
+    }
 
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
     if (error) {
       const message = error.message.toLowerCase();
-      if (message.includes("rate limit")) {
-        setErrorMessage(t("errors.rateLimit"));
-      } else if (error.status && error.status >= 500) {
-        setErrorMessage(t("errors.emailService"));
-      } else if (
-        mode === "admin" &&
-        message.includes("signups not allowed")
+      if (
+        message.includes("invalid login") ||
+        message.includes("invalid credentials")
       ) {
-        setErrorMessage(t("errors.notAdmin"));
+        setErrorMessage(t("errors.invalidCredentials"));
       } else {
         setErrorMessage(error.message || t("errorGeneric"));
       }
@@ -81,23 +96,48 @@ export function LoginForm({ mode }: { mode: LoginMode }) {
       return;
     }
 
-    setStatus("sent");
-  }
+    if (mode === "admin") {
+      const { data } = await supabase.auth.getClaims();
+      const role = (
+        data?.claims?.app_metadata as { role?: string } | undefined
+      )?.role;
+      if (role !== "admin") {
+        await supabase.auth.signOut();
+        setErrorMessage(t("errors.notAdmin"));
+        setStatus("error");
+        return;
+      }
+    }
 
-  if (status === "sent") {
-    return (
-      <Alert>
-        <MailCheck />
-        <AlertTitle>{t("checkEmailTitle")}</AlertTitle>
-        <AlertDescription>
-          {t("checkEmailDescription", { email })}
-        </AlertDescription>
-      </Alert>
-    );
+    window.location.assign(next);
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {mode === "citizen" && (
+        <div className="grid grid-cols-2 rounded-md bg-muted p-1">
+          {(["signin", "signup"] as const).map((action) => (
+            <button
+              key={action}
+              type="button"
+              aria-pressed={citizenAction === action}
+              onClick={() => {
+                setCitizenAction(action);
+                setStatus("idle");
+                setErrorMessage(null);
+              }}
+              className={`min-h-9 rounded-sm px-3 text-sm font-medium transition-colors ${
+                citizenAction === action
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {t(`actions.${action}`)}
+            </button>
+          ))}
+        </div>
+      )}
+
       <div className="space-y-1.5">
         <Label htmlFor="email">{t("emailLabel")}</Label>
         <Input
@@ -110,6 +150,29 @@ export function LoginForm({ mode }: { mode: LoginMode }) {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
+      </div>
+      <div className="space-y-1.5">
+        <Label htmlFor="password">{t("passwordLabel")}</Label>
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          required
+          minLength={10}
+          maxLength={72}
+          autoComplete={
+            mode === "citizen" && citizenAction === "signup"
+              ? "new-password"
+              : "current-password"
+          }
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        {mode === "citizen" && citizenAction === "signup" && (
+          <p className="text-xs text-muted-foreground">
+            {t("passwordRequirements")}
+          </p>
+        )}
       </div>
 
       {status === "error" && (
@@ -126,7 +189,12 @@ export function LoginForm({ mode }: { mode: LoginMode }) {
         className="w-full"
         disabled={status === "submitting"}
       >
-        {status === "submitting" ? t("submitting") : t("submit")}
+        <KeyRound />
+        {status === "submitting"
+          ? t("submitting")
+          : mode === "citizen" && citizenAction === "signup"
+            ? t("createAccount")
+            : t("submit")}
       </Button>
     </form>
   );
