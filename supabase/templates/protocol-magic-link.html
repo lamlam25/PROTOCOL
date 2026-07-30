@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <body style="margin:0;background:#f2f2f0;font-family:Arial,sans-serif;color:#111">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="center" style="padding:32px 16px">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:520px;background:#fff;border-top:5px solid #006a4e">
+            <tr>
+              <td style="padding:28px">
+                <p style="margin:0 0 18px;font-size:13px;font-weight:700">PROTOCOL36 <span style="color:#f42a41">|</span> SECURE ACCESS</p>
+                <h1 style="margin:0 0 12px;font-size:24px">Your secure sign-in link</h1>
+                <p style="margin:0 0 24px;line-height:1.6;color:#5c5c5c">Use the button below to continue to your protected PROTOCOL36 account. This one-time link expires shortly.</p>
+                <a href="{{ .RedirectTo }}&token_hash={{ .TokenHash }}&type=email" style="display:inline-block;background:#006a4e;color:#fff;text-decoration:none;font-weight:700;padding:13px 18px">Sign in securely</a>
+                <p style="margin:24px 0 0;font-size:12px;line-height:1.5;color:#777">If you did not request this link, you can ignore this email.</p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

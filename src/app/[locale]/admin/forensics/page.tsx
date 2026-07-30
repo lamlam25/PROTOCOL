@@ -27,7 +27,7 @@ export default async function AdminForensicsQueuePage({
   const { data: checks } = await supabase
     .from("forensic_checks")
     .select(
-      "id, related_table, related_id, risk_flag, review_status, created_at"
+      "id, related_table, related_id, risk_flag, review_status, created_at, file_name, file_kind"
     )
     .order("created_at", { ascending: false });
 
@@ -61,7 +61,14 @@ export default async function AdminForensicsQueuePage({
                     })}
                   </TableCell>
                   <TableCell className="text-foreground">
-                    {t(`relatedTypes.${check.related_table}`)}
+                    <span className="block">
+                      {t(`relatedTypes.${check.related_table}`)}
+                    </span>
+                    {check.file_name && (
+                      <span className="block max-w-56 truncate text-xs text-muted-foreground">
+                        {check.file_name} · {check.file_kind || "file"}
+                      </span>
+                    )}
                   </TableCell>
                   <TableCell>
                     <ForensicRiskBadge risk={check.risk_flag as RiskFlag} />

@@ -31,6 +31,8 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-warning: var(--warning);
   --color-warning-foreground: var(--warning-foreground);
+  --color-brand-red: var(--brand-red);
+  --color-brand-black: var(--brand-black);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -53,7 +55,7 @@
 }
 
 :root {
-  /* July Ledger palette: white/black institutional base, green/red (Bangladesh flag) as
+  /* PROTOCOL36 palette: white/black institutional base, green/red (Bangladesh flag) as
      the only brand/alert accents. --accent stays neutral gray (shadcn structural hover
      token) — red flows only through --destructive and explicit badge components, never
      a global hover color. See CLAUDE.md. */
@@ -78,6 +80,8 @@
   --border: #e5e5e5;
   --input: #e5e5e5;
   --ring: #006a4e;
+  --brand-red: #f42a41;
+  --brand-black: #070a09;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -116,6 +120,8 @@
   --border: #2a2a2a;
   --input: #2a2a2a;
   --ring: #1f9d73;
+  --brand-red: #ff5468;
+  --brand-black: #050706;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -140,5 +146,8 @@
   }
   html {
     @apply font-sans;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 30%, transparent);
   }
 }

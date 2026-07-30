@@ -1,4 +1,4 @@
-import { Scale } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "@/i18n/navigation";
@@ -38,20 +38,26 @@ export default async function AdminLayout({
 
   return (
     <div className="min-h-screen bg-muted/30">
-      <header className="border-b border-border bg-background">
-        <div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4">
-          <Scale className="size-5 text-primary" aria-hidden />
-          <span className="font-semibold text-foreground">
-            {t("nav.adminPanel")}
+      <header className="border-b border-white/10 bg-brand-black text-white">
+        <div className="mx-auto flex min-h-16 max-w-7xl items-center gap-3 px-4 py-2 sm:px-6">
+          <span className="grid size-8 place-items-center bg-primary">
+            <ShieldCheck className="size-4 text-white" aria-hidden />
           </span>
+          <div className="min-w-0">
+            <p className="truncate text-sm font-black">{t("siteName")}</p>
+            <p className="truncate text-xs text-white/60">
+              {t("nav.adminPanel")}
+            </p>
+          </div>
+          <span className="h-7 w-1 bg-brand-red" aria-hidden />
           <div className="ml-auto flex items-center gap-1">
-            <LocaleSwitcher />
-            <ThemeToggle />
+            <LocaleSwitcher inverted />
+            <ThemeToggle inverted />
             <SignOutButton />
           </div>
         </div>
       </header>
-      <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
+      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">{children}</main>
     </div>
   );
 }

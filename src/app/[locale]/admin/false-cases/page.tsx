@@ -22,18 +22,25 @@ const STATUS_CLASS: Record<string, string> = {
 
 export default async function AdminFalseCasesPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ user?: string }>;
 }) {
   const { locale } = await params;
+  const { user } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "admin.falseCases" });
 
   const supabase = await createClient();
-  const { data: submissions } = await supabase
+  let submissionsQuery = supabase
     .from("false_case_evidence")
     .select("id, accused_full_name, accused_full_name_bn, district, status, created_at")
     .order("created_at", { ascending: false });
+  if (user && /^[a-f0-9-]{36}$/i.test(user)) {
+    submissionsQuery = submissionsQuery.eq("submitted_by", user);
+  }
+  const { data: submissions } = await submissionsQuery;
 
   return (
     <div>

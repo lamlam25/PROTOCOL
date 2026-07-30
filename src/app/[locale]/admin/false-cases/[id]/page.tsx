@@ -36,7 +36,7 @@ export default async function AdminFalseCaseDetailPage({
 
   const { data: forensicChecks } = await supabase
     .from("forensic_checks")
-    .select("id, risk_flag, review_status")
+    .select("id, risk_flag, review_status, file_name, file_kind")
     .eq("related_table", "false_case_evidence")
     .eq("related_id", id);
 
@@ -85,6 +85,16 @@ export default async function AdminFalseCaseDetailPage({
             <span className="text-foreground">{submission.case_reference_number}</span>
           </p>
         )}
+        <p>
+          <span className="text-muted-foreground">
+            {t("detail.submitterRelationship")}:{" "}
+          </span>
+          <span className="text-foreground">
+            {t(
+              `detail.relationship.${submission.submitter_relationship || "self"}`
+            )}
+          </span>
+        </p>
         {submission.district && (
           <p>
             <span className="text-muted-foreground">{t("detail.district")}: </span>
@@ -135,7 +145,17 @@ export default async function AdminFalseCaseDetailPage({
                 >
                   <span className="inline-flex items-center gap-1.5 text-foreground">
                     <ShieldCheck className="size-4 text-primary" aria-hidden />
-                    {t("detail.viewForensicAnalysis")}
+                    <span className="min-w-0">
+                      <span className="block">
+                        {check.file_name || t("detail.viewForensicAnalysis")}
+                      </span>
+                      {check.file_name && (
+                        <span className="block text-xs text-muted-foreground">
+                          {t("detail.viewForensicAnalysis")} ·{" "}
+                          {check.file_kind || "file"}
+                        </span>
+                      )}
+                    </span>
                   </span>
                   <span className="text-xs text-muted-foreground">
                     {check.risk_flag} · {check.review_status}

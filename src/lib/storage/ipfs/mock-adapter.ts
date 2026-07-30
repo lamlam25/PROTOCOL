@@ -6,6 +6,7 @@ import { createHash } from "node:crypto";
 import type { IpfsAdapter, IpfsUploadResult } from "./types";
 
 const STORE_DIR = join(process.cwd(), ".local-ipfs-store");
+const MOCK_CID_PATTERN = /^mock-[a-f0-9]{32}$/;
 
 async function ensureStoreDir() {
   if (!existsSync(STORE_DIR)) {
@@ -31,6 +32,7 @@ export function createMockIpfsAdapter(): IpfsAdapter {
       }
       return {
         cid,
+        sha256: hash,
         size: buffer.byteLength,
         url: `/api/dev/local-ipfs/${cid}`,
         provider: "mock",
@@ -38,6 +40,9 @@ export function createMockIpfsAdapter(): IpfsAdapter {
     },
 
     async get(cid) {
+      if (!MOCK_CID_PATTERN.test(cid)) {
+        throw new Error("Invalid mock CID");
+      }
       const buffer = await readFile(join(STORE_DIR, cid));
       return new Blob([buffer]);
     },

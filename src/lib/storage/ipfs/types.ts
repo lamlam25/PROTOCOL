@@ -1,5 +1,6 @@
 export interface IpfsUploadResult {
   cid: string;
+  sha256: string;
   size: number;
   url: string;
   provider: "mock" | "pinata";

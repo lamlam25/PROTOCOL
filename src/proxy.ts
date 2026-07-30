@@ -11,6 +11,16 @@ function isAdminPath(pathname: string) {
   return withoutLocale === "/admin" || withoutLocale.startsWith("/admin/");
 }
 
+function isCitizenProtectedPath(pathname: string) {
+  const withoutLocale = pathname.replace(LOCALE_PATTERN, "");
+  return (
+    withoutLocale === "/citizen" ||
+    (withoutLocale.startsWith("/citizen/") &&
+      withoutLocale !== "/citizen/login") ||
+    withoutLocale === "/false-cases/submit"
+  );
+}
+
 function localeFromPath(pathname: string) {
   return pathname.match(LOCALE_PATTERN)?.[1] ?? routing.defaultLocale;
 }
@@ -40,6 +50,17 @@ export async function proxy(request: NextRequest) {
         .forEach((cookie) => redirectResponse.cookies.set(cookie));
       return redirectResponse;
     }
+  }
+
+  if (isCitizenProtectedPath(request.nextUrl.pathname) && !claims) {
+    const locale = localeFromPath(request.nextUrl.pathname);
+    const redirectUrl = new URL(`/${locale}/citizen/login`, request.url);
+    redirectUrl.searchParams.set("next", request.nextUrl.pathname);
+    const redirectResponse = NextResponse.redirect(redirectUrl);
+    supabaseResponse.cookies
+      .getAll()
+      .forEach((cookie) => redirectResponse.cookies.set(cookie));
+    return redirectResponse;
   }
 
   const intlResponse = handleI18nRouting(request);

@@ -12,6 +12,9 @@
 
 # testing
 /coverage
+.pytest_cache/
+__pycache__/
+*.py[cod]
 
 # next.js
 /.next/
@@ -32,6 +35,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -40,10 +44,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# july ledger: mock storage adapter (dev-only local files)
+# PROTOCOL36: mock storage adapter (dev-only local files)
 /.local-ipfs-store
 
-# july ledger: contracts is a separate npm project
+# PROTOCOL36: contracts is a separate npm project
 /contracts/node_modules
 /contracts/artifacts
 /contracts/cache

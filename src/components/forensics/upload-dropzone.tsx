@@ -2,16 +2,17 @@
 
 import { useRef, useState, type DragEvent } from "react";
 import { useTranslations } from "next-intl";
-import { UploadCloud, FileImage } from "lucide-react";
+import { Files, UploadCloud } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { EVIDENCE_ACCEPT, MAX_EVIDENCE_FILES } from "@/lib/evidence-files";
 
 export function UploadDropzone({
-  file,
-  onFileSelected,
+  files,
+  onFilesSelected,
   disabled,
 }: {
-  file: File | null;
-  onFileSelected: (file: File) => void;
+  files: File[];
+  onFilesSelected: (files: File[]) => void;
   disabled?: boolean;
 }) {
   const t = useTranslations("forensics.dropzone");
@@ -22,8 +23,8 @@ export function UploadDropzone({
     event.preventDefault();
     setIsDragging(false);
     if (disabled) return;
-    const dropped = event.dataTransfer.files?.[0];
-    if (dropped) onFileSelected(dropped);
+    const dropped = Array.from(event.dataTransfer.files ?? []);
+    if (dropped.length) onFilesSelected(dropped);
   }
 
   return (
@@ -53,19 +54,23 @@ export function UploadDropzone({
       <input
         ref={inputRef}
         type="file"
-        accept="image/png,image/jpeg,image/webp"
+        accept={EVIDENCE_ACCEPT}
+        multiple
         className="sr-only"
         disabled={disabled}
         onChange={(e) => {
-          const selected = e.target.files?.[0];
-          if (selected) onFileSelected(selected);
+          const selected = Array.from(e.target.files ?? []);
+          if (selected.length) onFilesSelected(selected);
+          e.currentTarget.value = "";
         }}
       />
-      {file ? (
+      {files.length > 0 ? (
         <>
-          <FileImage className="size-8 text-primary" aria-hidden />
-          <p className="text-sm font-medium text-foreground">{file.name}</p>
-          <p className="text-xs text-muted-foreground">{t("replaceHint")}</p>
+          <Files className="size-8 text-primary" aria-hidden />
+          <p className="text-sm font-medium text-foreground">
+            {t("selected", { count: files.length, max: MAX_EVIDENCE_FILES })}
+          </p>
+          <p className="text-xs text-muted-foreground">{t("addHint")}</p>
         </>
       ) : (
         <>

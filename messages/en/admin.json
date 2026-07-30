@@ -4,7 +4,15 @@
     "welcome": "Welcome, {name}. From this panel you can manage victims, cases, budget, volunteers, and forensic review.",
     "signOut": "Sign out",
     "forensicsQueueLink": "Forensics Review Queue",
+    "metrics": {
+      "registered": "Registered citizens",
+      "signedIn": "Citizens who signed in",
+      "recent": "Signed in, last 24h",
+      "evidence": "Evidence submissions",
+      "pending": "Files awaiting review"
+    },
     "links": {
+      "users": "Citizen Accounts & Sign-ins",
       "victims": "Victims & Martyrs",
       "cases": "Case Management",
       "lawyers": "Lawyer Directory",
@@ -13,6 +21,20 @@
       "volunteerTasks": "Volunteer Task Dispatch",
       "archive": "JulyStories Archive",
       "timeline": "Timeline Events"
+    }
+  },
+  "users": {
+    "title": "Citizen Accounts & Sign-ins",
+    "description": "View registered citizens, successful sign-ins, and the evidence associated with each account.",
+    "empty": "No citizen accounts have been created.",
+    "unknown": "Unnamed citizen",
+    "never": "Magic link not confirmed",
+    "evidenceCount": "{count} submission(s)",
+    "table": {
+      "user": "Citizen",
+      "joined": "Account created",
+      "lastSignIn": "Last successful sign-in",
+      "evidence": "Evidence"
     }
   },
   "forensics": {
@@ -41,6 +63,8 @@
       "back": "Back to queue",
       "notFound": "This forensic record could not be found.",
       "originalFile": "Original file",
+      "downloadFile": "Download original document",
+      "mediaUnsupported": "This browser cannot play the attached media.",
       "heatmap": "ELA heatmap",
       "heatmapUnavailable": "No heatmap was stored.",
       "ocrText": "Recognized text",
@@ -63,6 +87,37 @@
       "mockChainNote": "Mock chain — not a real Polygonscan transaction.",
       "onchainVerified": "Verified on-chain",
       "contractAddress": "Contract address",
+      "applicability": "Analysis applicability",
+      "metadataSignals": "Detected metadata markers",
+      "aiProbability": "AI-generation risk score: {score}%",
+      "aiImageAssessment": {
+        "likely_ai": {
+          "title": "High AI-generation risk",
+          "description": "The Python image classifier found a strong synthetic-image signal. Compare the original, ELA, source context, and claimant details before deciding."
+        },
+        "likely_real": {
+          "title": "Low AI-generation signal",
+          "description": "The classifier leans toward a real image. This is not proof of authenticity; complete the normal forensic and source review."
+        },
+        "inconclusive": {
+          "title": "AI-image screen is inconclusive",
+          "description": "The classifier did not reach a strong result. Manual source and forensic review is required."
+        },
+        "unavailable": {
+          "title": "AI-image screen unavailable",
+          "description": "No Python classifier result was recorded. Do not approve until the file is screened or independently verified."
+        }
+      },
+      "videoAssessment": {
+        "elevated": {
+          "title": "Elevated AI-generation metadata risk",
+          "description": "A known generative-video tool marker was found. Treat this as a lead for manual verification, not proof that the video is synthetic."
+        },
+        "inconclusive": {
+          "title": "Video authenticity remains inconclusive",
+          "description": "No known AI-tool marker was found. That does not establish authenticity; review the source, chronology, representative frame, and file fingerprint."
+        }
+      },
       "actionError": "Couldn't complete the action. Please try again."
     }
   },
@@ -251,6 +306,11 @@
       "alibiTimestamp": "Alibi timestamp",
       "description": "Description",
       "contact": "Contact",
+      "submitterRelationship": "Submitted by",
+      "relationship": {
+        "self": "Affected person",
+        "representative": "Representative for the affected person"
+      },
       "evidenceTitle": "Attached evidence",
       "viewForensicAnalysis": "View forensic analysis",
       "filesCount": "{count} file(s) attached in total.",

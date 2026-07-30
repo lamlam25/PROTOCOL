@@ -1,13 +1,30 @@
 {
   "hero": {
-    "title": "July 2024: A Ledger of Truth",
-    "subtitle": "A decentralized, forensically verified justice and rehabilitation platform for the martyrs, injured, and persecuted.",
+    "eyebrow": "Public accountability infrastructure · July 2024",
+    "title": "Evidence, justice, rehabilitation, and memory in one public record.",
+    "subtitle": "Verified records of martyrs and injured citizens, visible legal progress, traceable aid, secure evidence intake, and a permanent historical archive.",
     "viewVictims": "View Victims & Martyrs",
     "viewBudget": "View Budget Transparency"
   },
+  "stats": {
+    "verifiedPeople": "Published martyr and injured records",
+    "publicCases": "Public legal cases",
+    "allocated": "Total aid allocated",
+    "archiveRecords": "Verified archive records"
+  },
+  "live": {
+    "caseEyebrow": "Legal accountability",
+    "caseTitle": "Latest case progress",
+    "viewAll": "View all cases",
+    "noCases": "No verified public cases are available yet.",
+    "budgetEyebrow": "Recorded disbursements",
+    "budgetDescription": "Every public disbursement can be inspected by source, allocation, recipient, receipt, and blockchain transaction when available.",
+    "inspectBudget": "Inspect the fund flow"
+  },
   "mission": {
-    "title": "Our Mission",
-    "body": "The July 2024 mass uprising claimed lives, left thousands injured, and left many facing fabricated charges. July Ledger preserves their stories, brings transparency to relief and budget allocation, and makes every record tamper-proof through forensic verification and blockchain anchoring."
+    "eyebrow": "How PROTOCOL36 works",
+    "title": "An open citizen portal backed by a protected verification system",
+    "body": "Citizens browse verified records without an account. Administrators review forensic signals, manage cases and aid, coordinate field volunteers, preserve media through decentralized storage, and anchor approved fingerprints on Polygon."
   },
   "pillars": {
     "title": "What This Platform Covers",

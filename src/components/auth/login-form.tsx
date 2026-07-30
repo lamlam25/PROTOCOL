@@ -11,29 +11,65 @@ import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 type Status = "idle" | "submitting" | "sent" | "error";
+type LoginMode = "admin" | "citizen";
+const CALLBACK_ERRORS = new Set([
+  "provider",
+  "missingToken",
+  "expired",
+  "session",
+  "notAdmin",
+]);
 
-export function LoginForm() {
-  const t = useTranslations("auth.login");
+export function LoginForm({ mode }: { mode: LoginMode }) {
+  const t = useTranslations(`auth.${mode}Login`);
   const locale = useLocale();
   const searchParams = useSearchParams();
-  const next = searchParams.get("next") ?? `/${locale}`;
+  const requestedNext = searchParams.get("next");
+  const fallback =
+    mode === "admin"
+      ? `/${locale}/admin/dashboard`
+      : `/${locale}/false-cases/submit`;
+  const isAllowedNext =
+    mode === "admin"
+      ? requestedNext?.startsWith(`/${locale}/admin`) === true
+      : requestedNext?.startsWith(`/${locale}/citizen`) === true ||
+        requestedNext === `/${locale}/false-cases/submit`;
+  const next = isAllowedNext && requestedNext ? requestedNext : fallback;
+  const requestedError = searchParams.get("error");
+  const callbackError =
+    requestedError && CALLBACK_ERRORS.has(requestedError)
+      ? requestedError
+      : null;
 
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<Status>("idle");
+  const [status, setStatus] = useState<Status>(
+    callbackError ? "error" : "idle"
+  );
+  const [errorMessage, setErrorMessage] = useState<string | null>(
+    callbackError ? t(`errors.${callbackError}`) : null
+  );
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("submitting");
+    setErrorMessage(null);
 
     const supabase = createClient();
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${window.location.origin}/${locale}/callback?next=${encodeURIComponent(next)}`,
+        shouldCreateUser: mode === "citizen",
+        emailRedirectTo: `${window.location.origin}/${locale}/callback?mode=${mode}&next=${encodeURIComponent(next)}`,
       },
     });
 
-    setStatus(error ? "error" : "sent");
+    if (error) {
+      setErrorMessage(error.message || t("errorGeneric"));
+      setStatus("error");
+      return;
+    }
+
+    setStatus("sent");
   }
 
   if (status === "sent") {
@@ -67,7 +103,9 @@ export function LoginForm() {
       {status === "error" && (
         <Alert variant="destructive">
           <TriangleAlert />
-          <AlertDescription>{t("errorGeneric")}</AlertDescription>
+          <AlertDescription>
+            {errorMessage ?? t("errorGeneric")}
+          </AlertDescription>
         </Alert>
       )}
 

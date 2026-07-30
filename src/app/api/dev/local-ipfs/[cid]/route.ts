@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { NextResponse } from "next/server";
 
 const STORE_DIR = join(process.cwd(), ".local-ipfs-store");
+const MOCK_CID_PATTERN = /^mock-[a-f0-9]{32}$/;
 
 /**
  * Dev-only file server for the mock IPFS adapter (src/lib/storage/ipfs/mock-adapter.ts).
@@ -14,6 +15,9 @@ export async function GET(
   { params }: { params: Promise<{ cid: string }> }
 ) {
   const { cid } = await params;
+  if (!MOCK_CID_PATTERN.test(cid)) {
+    return NextResponse.json({ error: "Invalid CID" }, { status: 400 });
+  }
   const filePath = join(STORE_DIR, cid);
   if (!existsSync(filePath)) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });

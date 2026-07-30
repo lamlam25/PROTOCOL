@@ -385,7 +385,8 @@ export type Database = {
           review_notes: string | null
           reviewed_by: string | null
           status: string
-          submitted_by: string
+          submitter_relationship: string
+          submitted_by: string | null
           updated_at: string
         }
         Insert: {
@@ -403,7 +404,8 @@ export type Database = {
           review_notes?: string | null
           reviewed_by?: string | null
           status?: string
-          submitted_by: string
+          submitter_relationship?: string
+          submitted_by?: string | null
           updated_at?: string
         }
         Update: {
@@ -421,7 +423,8 @@ export type Database = {
           review_notes?: string | null
           reviewed_by?: string | null
           status?: string
-          submitted_by?: string
+          submitter_relationship?: string
+          submitted_by?: string | null
           updated_at?: string
         }
         Relationships: [
@@ -443,11 +446,15 @@ export type Database = {
       }
       forensic_checks: {
         Row: {
+          analysis_metadata: Json
           created_at: string
           created_by: string | null
           ela_heatmap_ipfs_cid: string | null
           ela_score: number | null
+          file_kind: string | null
+          file_name: string | null
           file_sha256: string
+          file_type: string | null
           id: string
           ipfs_cid: string | null
           ocr_extracted_fields: Json
@@ -464,11 +471,15 @@ export type Database = {
           risk_flag: string
         }
         Insert: {
+          analysis_metadata?: Json
           created_at?: string
           created_by?: string | null
           ela_heatmap_ipfs_cid?: string | null
           ela_score?: number | null
+          file_kind?: string | null
+          file_name?: string | null
           file_sha256: string
+          file_type?: string | null
           id?: string
           ipfs_cid?: string | null
           ocr_extracted_fields?: Json
@@ -485,11 +496,15 @@ export type Database = {
           risk_flag?: string
         }
         Update: {
+          analysis_metadata?: Json
           created_at?: string
           created_by?: string | null
           ela_heatmap_ipfs_cid?: string | null
           ela_score?: number | null
+          file_kind?: string | null
+          file_name?: string | null
           file_sha256?: string
+          file_type?: string | null
           id?: string
           ipfs_cid?: string | null
           ocr_extracted_fields?: Json

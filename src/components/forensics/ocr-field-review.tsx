@@ -16,9 +16,11 @@ import type { OcrResult } from "@/lib/forensics/types";
 export function OcrFieldReview({
   result,
   onFieldsChange,
+  idPrefix = "ocr",
 }: {
   result: OcrResult;
   onFieldsChange: (fields: { nationalId: string; date: string }) => void;
+  idPrefix?: string;
 }) {
   const t = useTranslations("forensics.ocr");
   const [nationalId, setNationalId] = useState(
@@ -49,18 +51,18 @@ export function OcrFieldReview({
 
       <div className="grid gap-3 sm:grid-cols-2">
         <div className="space-y-1.5">
-          <Label htmlFor="ocr-nid">{t("nationalId")}</Label>
+          <Label htmlFor={`${idPrefix}-nid`}>{t("nationalId")}</Label>
           <Input
-            id="ocr-nid"
+            id={`${idPrefix}-nid`}
             value={nationalId}
             onChange={(e) => update({ nationalId: e.target.value })}
             placeholder={t("nationalIdPlaceholder")}
           />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="ocr-date">{t("date")}</Label>
+          <Label htmlFor={`${idPrefix}-date`}>{t("date")}</Label>
           <Input
-            id="ocr-date"
+            id={`${idPrefix}-date`}
             value={date}
             onChange={(e) => update({ date: e.target.value })}
             placeholder={t("datePlaceholder")}

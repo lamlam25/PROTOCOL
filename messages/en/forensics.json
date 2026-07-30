@@ -1,8 +1,63 @@
 {
   "dropzone": {
-    "title": "Click to select or drag a file here",
-    "hint": "JPG, PNG, or WebP (15MB max)",
-    "replaceHint": "Click to replace"
+    "title": "Select files or drag them here",
+    "hint": "Images, PDF, video, audio, DOC/DOCX, TXT, CSV, or RTF",
+    "selected": "{count} of {max} files selected",
+    "addHint": "Click or drag to add more files"
+  },
+  "fileKinds": {
+    "image": "Image",
+    "pdf": "PDF document",
+    "video": "Video",
+    "document": "Document",
+    "audio": "Audio"
+  },
+  "checks": {
+    "sha256": "SHA-256 fingerprint",
+    "ela": "ELA",
+    "ocr": "OCR",
+    "phash": "Perceptual hash",
+    "aiImage": "AI-image risk check"
+  },
+  "status": {
+    "complete": "Complete",
+    "notApplicable": "Not applicable",
+    "manualReview": "Manual review",
+    "unavailable": "Unavailable"
+  },
+  "aiImage": {
+    "score": "AI-generation probability: {score}%",
+    "assessment": {
+      "likely_ai": {
+        "title": "Likely AI-generated image",
+        "description": "The automated model found a strong AI-generation signal. This file will be flagged for administrator review and is not treated as verified evidence."
+      },
+      "likely_real": {
+        "title": "No strong AI-generation signal",
+        "description": "The automated model considers this image likely real. This is a screening result, not proof of authenticity; an administrator will still review its source and context."
+      },
+      "inconclusive": {
+        "title": "AI-image assessment is inconclusive",
+        "description": "The automated model could not classify this image confidently. The file will require administrator review."
+      },
+      "unavailable": {
+        "title": "AI-image check is temporarily unavailable",
+        "description": "Evidence submission is paused because the required server-side AI screening could not be completed. Try again after the service is restored."
+      }
+    }
+  },
+  "video": {
+    "metadata": "{width}×{height} · {duration}s",
+    "assessment": {
+      "elevated": {
+        "title": "AI-generation metadata signal detected",
+        "description": "The file contains a known generative-video tool marker. This raises risk but is not proof; an administrator must review the original and its provenance."
+      },
+      "inconclusive": {
+        "title": "Video authenticity is inconclusive",
+        "description": "No known AI-tool marker was found in the readable metadata. Absence of a marker does not prove the video is authentic; the fingerprint, representative frame, context, and source must be reviewed."
+      }
+    }
   },
   "ela": {
     "title": "Image Manipulation Check (ELA)",

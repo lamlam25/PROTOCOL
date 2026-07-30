@@ -1,6 +1,6 @@
 {
-  "siteName": "July Ledger",
-  "siteDescription": "A transparent, forensically verified digital archive and justice platform for the martyrs, injured, and persecuted of Bangladesh's July 2024 mass uprising.",
+  "siteName": "PROTOCOL36",
+  "siteDescription": "A decentralized, forensically verified public accountability, justice, and historical archive platform for Bangladesh's July 2024 mass uprising.",
   "nav": {
     "victims": "Victims & Martyrs",
     "cases": "Case Tracker",
@@ -11,7 +11,12 @@
     "timeline": "Timeline",
     "about": "About",
     "login": "Log in",
-    "adminPanel": "Admin Panel"
+    "citizenLogin": "Citizen sign in",
+    "citizenPortal": "My submissions",
+    "adminAccess": "Admin access",
+    "adminPanel": "Admin control room",
+    "publicPortal": "Public portal",
+    "openMenu": "Open navigation menu"
   },
   "language": {
     "label": "Language",
@@ -40,7 +45,7 @@
     "home": "Back to home"
   },
   "footer": {
-    "tagline": "Truth preserved. Justice made visible.",
+    "tagline": "Preserve truth. Make accountability public.",
     "rights": "All rights reserved."
   }
 }

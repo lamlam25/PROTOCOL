@@ -131,18 +131,14 @@ create policy "admins manage case updates" on public.case_updates
 
 -- ============================================================================
 -- false_case_evidence
--- Never publicly readable. Submission requires an authenticated account (the
--- user decided this, since it's legally sensitive and submitters need to
--- track their own case) so the INSERT check ties the row to the caller.
+-- Never publicly readable. Authenticated citizen intake is written only by a
+-- rate-limited service-role Route Handler; no anonymous client policy exists.
 -- ============================================================================
 
 alter table public.false_case_evidence enable row level security;
 
 create policy "submitters can read their own evidence" on public.false_case_evidence
   for select using (submitted_by = auth.uid() or public.is_admin());
-
-create policy "authenticated users can submit evidence" on public.false_case_evidence
-  for insert with check (submitted_by = auth.uid());
 
 create policy "admins manage evidence review" on public.false_case_evidence
   for update using (public.is_admin()) with check (public.is_admin());

@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { createClient } from "@/lib/supabase/server";
+import { enforceSubmissionThrottle } from "@/lib/submission-throttle";
 import {
   hammingDistanceHex,
   DUPLICATE_HAMMING_THRESHOLD,
@@ -12,10 +13,27 @@ import {
  * is fine at this project's scale (hundreds, not millions, of rows).
  */
 export async function POST(request: NextRequest) {
+  const origin = request.headers.get("origin");
+  if (origin && origin !== request.nextUrl.origin) {
+    return NextResponse.json({ error: "Forbidden origin" }, { status: 403 });
+  }
+
   const supabase = await createClient();
-  const { data: authData, error: authError } = await supabase.auth.getClaims();
-  if (authError || !authData?.claims) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const { data: auth } = await supabase.auth.getClaims();
+  if (!auth?.claims?.sub) {
+    return NextResponse.json(
+      { error: "Authentication required" },
+      { status: 401 }
+    );
+  }
+
+  const allowed = await enforceSubmissionThrottle(
+    request,
+    "forensics.phash-check",
+    10
+  );
+  if (!allowed) {
+    return NextResponse.json({ error: "Rate limit reached" }, { status: 429 });
   }
 
   const body = await request.json();
@@ -27,7 +45,7 @@ export async function POST(request: NextRequest) {
   const admin = createAdminClient();
   const { data, error } = await admin
     .from("forensic_checks")
-    .select("related_table, related_id, phash")
+    .select("phash")
     .not("phash", "is", null);
 
   if (error) {
@@ -37,8 +55,6 @@ export async function POST(request: NextRequest) {
   const matches = (data ?? [])
     .filter((row) => row.phash)
     .map((row) => ({
-      relatedTable: row.related_table,
-      relatedId: row.related_id,
       hammingDistance: hammingDistanceHex(phash, row.phash as string),
     }))
     .filter((match) => match.hammingDistance <= DUPLICATE_HAMMING_THRESHOLD)

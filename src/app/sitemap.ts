@@ -13,7 +13,6 @@ const PUBLIC_PATHS = [
   "/stories",
   "/timeline",
   "/about",
-  "/login",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

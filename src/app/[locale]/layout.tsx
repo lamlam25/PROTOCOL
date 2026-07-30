@@ -44,11 +44,20 @@ export async function generateMetadata(props: {
       url: `/${locale}`,
       title: t("siteName"),
       description: t("siteDescription"),
+      images: [
+        {
+          url: "/protocol-archive-hero.webp",
+          width: 1672,
+          height: 941,
+          alt: t("siteName"),
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: t("siteName"),
       description: t("siteDescription"),
+      images: ["/protocol-archive-hero.webp"],
     },
   };
 }

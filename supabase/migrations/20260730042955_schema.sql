@@ -1,4 +1,4 @@
--- July Ledger core schema.
+-- PROTOCOL36 core schema.
 -- Enums are text + CHECK constraints (not native Postgres enums) so adding a
 -- new status/category later is a plain migration, not an ALTER TYPE dance.
 
@@ -149,13 +149,13 @@ create index case_updates_case_id_idx on public.case_updates (case_id, update_da
 
 -- ============================================================================
 -- false_case_evidence (alibi evidence for fabricated-charge victims)
--- Requires an authenticated submitter (see routing note in RLS migration) so
--- the submitter can track their own submission's review status.
+-- Public intake is handled by a rate-limited service-role Route Handler.
+-- Evidence remains private and is never exposed through an anonymous policy.
 -- ============================================================================
 
 create table public.false_case_evidence (
   id uuid primary key default gen_random_uuid(),
-  submitted_by uuid not null references public.profiles (id),
+  submitted_by uuid references public.profiles (id),
   accused_full_name text not null,
   accused_full_name_bn text,
   case_reference_number text,
@@ -169,6 +169,8 @@ create table public.false_case_evidence (
   review_notes text,
   contact_email text,
   contact_phone text,
+  submitter_relationship text not null default 'self'
+    check (submitter_relationship in ('self', 'representative')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -322,6 +324,10 @@ create table public.forensic_checks (
   related_table text not null
     check (related_table in ('victims', 'false_case_evidence', 'archive_items', 'budget_transactions')),
   related_id uuid not null,
+  file_name text,
+  file_type text,
+  file_kind text
+    check (file_kind in ('image', 'pdf', 'video', 'document', 'audio')),
   file_sha256 text not null,
   ela_score numeric,
   ela_heatmap_ipfs_cid text,
@@ -329,6 +335,7 @@ create table public.forensic_checks (
   phash_matches jsonb not null default '[]'::jsonb,
   ocr_raw_text text,
   ocr_extracted_fields jsonb not null default '{}'::jsonb,
+  analysis_metadata jsonb not null default '{}'::jsonb,
   risk_flag text not null default 'none' check (risk_flag in ('none', 'low', 'medium', 'high')),
   reviewed_by uuid references public.profiles (id),
   review_status text not null default 'pending' check (review_status in ('pending', 'approved', 'rejected')),
